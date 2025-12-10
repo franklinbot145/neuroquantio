@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import heroChip from "@/assets/hero-chip.png";
 
 export const Hero = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden noise-bg">
       {/* Background image */}
@@ -66,7 +69,7 @@ export const Hero = () => {
           >
             <Sparkles className="w-4 h-4 text-neon-cyan" />
             <span className="text-sm text-muted-foreground">
-              Next-Generation AI Solutions
+              {t("hero.badge")}
             </span>
           </motion.div>
 
@@ -77,9 +80,9 @@ export const Hero = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
           >
-            Architecting the{" "}
+            {t("hero.headline1")}{" "}
             <span className="relative">
-              <span className="neon-text">Intelligent</span>
+              <span className="neon-text">{t("hero.headline2")}</span>
               <motion.span
                 className="absolute -inset-1 bg-gradient-to-r from-neon-cyan/20 to-neon-purple/20 blur-xl"
                 animate={{
@@ -93,7 +96,7 @@ export const Hero = () => {
               />
             </span>{" "}
             <br className="hidden md:block" />
-            Enterprise
+            {t("hero.headline3")}
           </motion.h1>
 
           {/* Subheadline */}
@@ -103,8 +106,7 @@ export const Hero = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-10"
           >
-            From AI Infrastructure to Voice Agents – We build the brain of your business.
-            Transform operations with cutting-edge neural networks and automation.
+            {t("hero.subheadline")}
           </motion.p>
 
           {/* CTA Buttons */}
@@ -115,11 +117,11 @@ export const Hero = () => {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Button variant="hero" size="xl" className="group">
-              Audit your Infrastructure
+              {t("hero.cta1")}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button variant="heroOutline" size="xl">
-              View Solutions
+              {t("hero.cta2")}
             </Button>
           </motion.div>
 
@@ -131,10 +133,10 @@ export const Hero = () => {
             className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 pt-10 border-t border-border/50"
           >
             {[
-              { value: "500+", label: "AI Models Deployed" },
-              { value: "99.9%", label: "Uptime SLA" },
-              { value: "10x", label: "Efficiency Gains" },
-              { value: "24/7", label: "AI Support" },
+              { value: "500+", label: t("hero.stats.models") },
+              { value: "99.9%", label: t("hero.stats.uptime") },
+              { value: "10x", label: t("hero.stats.efficiency") },
+              { value: "24/7", label: t("hero.stats.support") },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}

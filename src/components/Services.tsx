@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { 
   Globe, 
   MessageSquare, 
@@ -9,51 +10,6 @@ import {
   ArrowUpRight
 } from "lucide-react";
 import aiBrain from "@/assets/ai-brain.png";
-
-const services = [
-  {
-    icon: Globe,
-    title: "AI Web Development",
-    description: "Self-optimizing websites powered by neural networks.",
-    color: "from-neon-cyan to-neon-blue",
-    span: "md:col-span-2",
-  },
-  {
-    icon: MessageSquare,
-    title: "Embedded AI Chatbots",
-    description: "24/7 Support Agents trained on your specific data.",
-    color: "from-neon-purple to-neon-cyan",
-    span: "md:col-span-1",
-  },
-  {
-    icon: Server,
-    title: "Enterprise AI Infrastructure",
-    description: "Scalable LLM integration and local model hosting.",
-    color: "from-neon-blue to-neon-purple",
-    span: "md:col-span-1",
-  },
-  {
-    icon: Phone,
-    title: "Voice AI Bots",
-    description: "Human-like voice assistants for inbound/outbound calls.",
-    color: "from-neon-cyan to-neon-purple",
-    span: "md:col-span-2",
-  },
-  {
-    icon: Video,
-    title: "Organic Content Engine",
-    description: "AI-generated Reels and Shorts for viral growth.",
-    color: "from-neon-purple to-neon-blue",
-    span: "md:col-span-1",
-  },
-  {
-    icon: BarChart3,
-    title: "Performance Ads",
-    description: "Data-driven ad campaigns optimized by algorithms.",
-    color: "from-neon-blue to-neon-cyan",
-    span: "md:col-span-1",
-  },
-];
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -79,6 +35,53 @@ const itemVariants = {
 };
 
 export const Services = () => {
+  const { t } = useTranslation();
+
+  const services = [
+    {
+      icon: Globe,
+      titleKey: "services.items.webDev.title",
+      descKey: "services.items.webDev.description",
+      color: "from-neon-cyan to-neon-blue",
+      span: "md:col-span-2",
+    },
+    {
+      icon: MessageSquare,
+      titleKey: "services.items.chatbots.title",
+      descKey: "services.items.chatbots.description",
+      color: "from-neon-purple to-neon-cyan",
+      span: "md:col-span-1",
+    },
+    {
+      icon: Server,
+      titleKey: "services.items.infrastructure.title",
+      descKey: "services.items.infrastructure.description",
+      color: "from-neon-blue to-neon-purple",
+      span: "md:col-span-1",
+    },
+    {
+      icon: Phone,
+      titleKey: "services.items.voice.title",
+      descKey: "services.items.voice.description",
+      color: "from-neon-cyan to-neon-purple",
+      span: "md:col-span-2",
+    },
+    {
+      icon: Video,
+      titleKey: "services.items.content.title",
+      descKey: "services.items.content.description",
+      color: "from-neon-purple to-neon-blue",
+      span: "md:col-span-1",
+    },
+    {
+      icon: BarChart3,
+      titleKey: "services.items.ads.title",
+      descKey: "services.items.ads.description",
+      color: "from-neon-blue to-neon-cyan",
+      span: "md:col-span-1",
+    },
+  ];
+
   return (
     <section id="services" className="py-24 relative overflow-hidden">
       {/* Background elements */}
@@ -103,10 +106,10 @@ export const Services = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Our <span className="neon-text">Solutions</span>
+            {t("services.title")} <span className="neon-text">{t("services.titleHighlight")}</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Comprehensive AI services designed to transform every aspect of your business operations.
+            {t("services.subtitle")}
           </p>
         </motion.div>
 
@@ -120,7 +123,7 @@ export const Services = () => {
         >
           {services.map((service) => (
             <motion.div
-              key={service.title}
+              key={service.titleKey}
               variants={itemVariants}
               className={`group relative ${service.span} rounded-2xl p-6 lg:p-8 glass-strong hover:border-neon-cyan/40 transition-all duration-500 cursor-pointer overflow-hidden`}
             >
@@ -140,12 +143,12 @@ export const Services = () => {
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="text-xl font-semibold text-foreground group-hover:text-neon-cyan transition-colors">
-                    {service.title}
+                    {t(service.titleKey)}
                   </h3>
                   <ArrowUpRight className="w-5 h-5 text-muted-foreground opacity-0 group-hover:opacity-100 group-hover:text-neon-cyan transition-all transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </div>
                 <p className="text-muted-foreground leading-relaxed">
-                  {service.description}
+                  {t(service.descKey)}
                 </p>
               </div>
 
