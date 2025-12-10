@@ -76,7 +76,7 @@ export const en = {
         languages: "Languages",
       },
       chat: {
-        assistant: "NeuralScale AI",
+        assistant: "Neuroquant AI",
         analyzing: "Analyzing...",
         placeholder: "Type a message...",
         messages: {
@@ -128,11 +128,12 @@ export const en = {
         title: "Ready to",
         titleHighlight: "Transform",
         titleEnd: "Your Business?",
-        subtitle: "Schedule a free consultation with our AI specialists and discover how NeuralScale can accelerate your digital transformation.",
+        subtitle: "Schedule a free consultation with our AI specialists and discover how Neuroquant can accelerate your digital transformation.",
         button: "Schedule Consultation",
       },
       brand: {
         tagline: "Building the neural infrastructure of tomorrow's enterprises. AI-first solutions for the modern business.",
+        name: "Neuroquant",
       },
       links: {
         solutions: "Solutions",
@@ -161,11 +162,11 @@ export const en = {
     
     // Chat Widget
     chatWidget: {
-      title: "NeuralScale AI",
+      title: "Neuroquant AI",
       online: "Online now",
-      welcome: "Hi there! I'm your AI assistant. How can I help you explore NeuralScale's solutions today?",
+      welcome: "Hi there! I'm your AI assistant. How can I help you explore Neuroquant's solutions today?",
       placeholder: "Ask me anything...",
-      poweredBy: "Powered by NeuralScale AI",
+      poweredBy: "Powered by Neuroquant AI",
       quickActions: {
         infrastructure: "AI Infrastructure",
         voiceBots: "Voice Bots",
@@ -177,8 +178,8 @@ export const en = {
     auth: {
       welcomeBack: "Welcome back",
       createAccount: "Create your account",
-      signInSubtitle: "Sign in to access your AI dashboard",
-      signUpSubtitle: "Get started with NeuralScale today",
+      signInSubtitle: "Sign in to access your Neuroquant dashboard",
+      signUpSubtitle: "Get started with Neuroquant today",
       email: "Email address",
       emailPlaceholder: "you@example.com",
       password: "Password",
@@ -198,7 +199,7 @@ export const en = {
         welcomeBack: "Welcome back!",
         loggedIn: "You have successfully logged in.",
         accountCreated: "Account created!",
-        welcomeNew: "Welcome to NeuralScale. You are now logged in.",
+        welcomeNew: "Welcome to Neuroquant. You are now logged in.",
       },
     },
     

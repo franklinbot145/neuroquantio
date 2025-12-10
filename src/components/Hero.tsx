@@ -14,9 +14,9 @@ export const Hero = () => {
         <img 
           src={heroChip} 
           alt="AI Neural Network Chip" 
-          className="w-full h-full object-cover opacity-40"
+          className="w-full h-full object-cover opacity-60"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
       </div>
 
       {/* Mesh gradient overlay */}

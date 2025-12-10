@@ -76,7 +76,7 @@ export const de = {
         languages: "Sprachen",
       },
       chat: {
-        assistant: "NeuralScale KI",
+        assistant: "Neuroquant KI",
         analyzing: "Analysiert...",
         placeholder: "Nachricht eingeben...",
         messages: {
@@ -128,11 +128,12 @@ export const de = {
         title: "Bereit, Ihr",
         titleHighlight: "Unternehmen zu transformieren",
         titleEnd: "?",
-        subtitle: "Vereinbaren Sie eine kostenlose Beratung mit unseren KI-Spezialisten und entdecken Sie, wie NeuralScale Ihre digitale Transformation beschleunigen kann.",
+        subtitle: "Vereinbaren Sie eine kostenlose Beratung mit unseren KI-Spezialisten und entdecken Sie, wie Neuroquant Ihre digitale Transformation beschleunigen kann.",
         button: "Beratung vereinbaren",
       },
       brand: {
         tagline: "Wir bauen die neuronale Infrastruktur der Unternehmen von morgen. KI-first Lösungen für das moderne Geschäft.",
+        name: "Neuroquant",
       },
       links: {
         solutions: "Lösungen",
@@ -161,11 +162,11 @@ export const de = {
     
     // Chat Widget
     chatWidget: {
-      title: "NeuralScale KI",
+      title: "Neuroquant KI",
       online: "Jetzt online",
-      welcome: "Hallo! Ich bin Ihr KI-Assistent. Wie kann ich Ihnen helfen, die Lösungen von NeuralScale zu erkunden?",
+      welcome: "Hallo! Ich bin Ihr KI-Assistent. Wie kann ich Ihnen helfen, die Lösungen von Neuroquant zu erkunden?",
       placeholder: "Fragen Sie mich etwas...",
-      poweredBy: "Powered by NeuralScale KI",
+      poweredBy: "Powered by Neuroquant KI",
       quickActions: {
         infrastructure: "KI-Infrastruktur",
         voiceBots: "Sprach-Bots",
@@ -177,8 +178,8 @@ export const de = {
     auth: {
       welcomeBack: "Willkommen zurück",
       createAccount: "Konto erstellen",
-      signInSubtitle: "Melden Sie sich an, um auf Ihr KI-Dashboard zuzugreifen",
-      signUpSubtitle: "Starten Sie noch heute mit NeuralScale",
+      signInSubtitle: "Melden Sie sich an, um auf Ihr Neuroquant-Dashboard zuzugreifen",
+      signUpSubtitle: "Starten Sie noch heute mit Neuroquant",
       email: "E-Mail-Adresse",
       emailPlaceholder: "sie@beispiel.de",
       password: "Passwort",
@@ -198,7 +199,7 @@ export const de = {
         welcomeBack: "Willkommen zurück!",
         loggedIn: "Sie haben sich erfolgreich angemeldet.",
         accountCreated: "Konto erstellt!",
-        welcomeNew: "Willkommen bei NeuralScale. Sie sind jetzt angemeldet.",
+        welcomeNew: "Willkommen bei Neuroquant. Sie sind jetzt angemeldet.",
       },
     },
     
