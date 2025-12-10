@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const navLinks = [
   { name: "Services", href: "#services" },
@@ -13,6 +15,8 @@ const navLinks = [
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { user } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,10 +72,21 @@ export const Navbar = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:block">
-            <Button variant="neon" size="default">
-              Get Started
-            </Button>
+          <div className="hidden md:flex items-center gap-3">
+            {user ? (
+              <Button variant="neon" onClick={() => navigate("/dashboard")}>
+                Dashboard
+              </Button>
+            ) : (
+              <>
+                <Button variant="ghost" onClick={() => navigate("/auth")}>
+                  Sign In
+                </Button>
+                <Button variant="neon" onClick={() => navigate("/auth")}>
+                  Get Started
+                </Button>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -104,9 +119,15 @@ export const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-              <Button variant="neon" className="mt-4">
-                Get Started
-              </Button>
+              {user ? (
+                <Button variant="neon" className="mt-4" onClick={() => navigate("/dashboard")}>
+                  Dashboard
+                </Button>
+              ) : (
+                <Button variant="neon" className="mt-4" onClick={() => navigate("/auth")}>
+                  Get Started
+                </Button>
+              )}
             </div>
           </motion.div>
         )}
