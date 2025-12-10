@@ -64,7 +64,7 @@ export const Footer = () => {
               </Button>
               <Button variant="heroOutline" size="lg">
                 <Mail className="w-5 h-5" />
-                hello@neuralscale.ai
+                hello@neuroquant.ai
               </Button>
             </div>
           </div>
@@ -79,7 +79,7 @@ export const Footer = () => {
                 <Zap className="w-5 h-5 text-primary-foreground" />
               </div>
               <span className="text-xl font-bold text-foreground">
-                Neural<span className="text-neon-cyan">Scale</span>
+                Neuro<span className="text-neon-cyan">quant</span>
               </span>
             </a>
             <p className="text-muted-foreground text-sm max-w-xs mb-6">
@@ -143,7 +143,7 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} NeuralScale. {t("footer.legal.rights")}
+            © {new Date().getFullYear()} Neuroquant. {t("footer.legal.rights")}
           </p>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <a href="#" className="hover:text-foreground transition-colors">{t("footer.legal.privacy")}</a>
