@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Zap } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import neuroquantLogo from "@/assets/neuroquant-logo.png";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useAuth } from "@/contexts/AuthContext";
@@ -45,16 +46,14 @@ export const Navbar = () => {
           {/* Logo */}
           <motion.a
             href="#"
-            className="flex items-center gap-2 group"
+            className="flex items-center group"
             whileHover={{ scale: 1.05 }}
           >
-            <div className="relative w-10 h-10 flex items-center justify-center">
-              <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan to-neon-purple rounded-lg opacity-80 group-hover:opacity-100 transition-opacity" />
-              <Zap className="relative w-6 h-6 text-primary-foreground" />
-            </div>
-            <span className="text-xl font-bold text-foreground">
-              Neuro<span className="text-neon-cyan">quant</span>
-            </span>
+            <img 
+              src={neuroquantLogo} 
+              alt="Neuroquant Logo" 
+              className="h-12 w-auto object-contain"
+            />
           </motion.a>
 
           {/* Desktop Navigation */}
