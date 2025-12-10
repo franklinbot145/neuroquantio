@@ -1,85 +1,59 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
-
-// Animated grid background
-const GridBackground = () => (
-  <div className="absolute inset-0 overflow-hidden pointer-events-none">
-    {/* Mesh gradient overlay */}
-    <div className="absolute inset-0 mesh-gradient" />
-    
-    {/* Animated grid lines */}
-    <div className="absolute inset-0 opacity-20">
-      <div 
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, hsl(185 100% 50% / 0.1) 1px, transparent 1px),
-            linear-gradient(to bottom, hsl(185 100% 50% / 0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: '60px 60px',
-        }}
-      />
-    </div>
-
-    {/* Floating orbs */}
-    <motion.div
-      className="absolute w-[600px] h-[600px] rounded-full"
-      style={{
-        background: 'radial-gradient(circle, hsl(185 100% 50% / 0.15) 0%, transparent 70%)',
-        left: '10%',
-        top: '20%',
-      }}
-      animate={{
-        scale: [1, 1.2, 1],
-        opacity: [0.3, 0.5, 0.3],
-      }}
-      transition={{
-        duration: 8,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-    />
-    <motion.div
-      className="absolute w-[500px] h-[500px] rounded-full"
-      style={{
-        background: 'radial-gradient(circle, hsl(270 100% 65% / 0.1) 0%, transparent 70%)',
-        right: '5%',
-        bottom: '10%',
-      }}
-      animate={{
-        scale: [1.2, 1, 1.2],
-        opacity: [0.3, 0.5, 0.3],
-      }}
-      transition={{
-        duration: 10,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-    />
-
-    {/* Glowing center orb */}
-    <motion.div
-      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px]"
-      style={{
-        background: 'radial-gradient(circle, hsl(220 100% 60% / 0.08) 0%, transparent 50%)',
-      }}
-      animate={{
-        rotate: 360,
-      }}
-      transition={{
-        duration: 60,
-        repeat: Infinity,
-        ease: "linear",
-      }}
-    />
-  </div>
-);
+import heroChip from "@/assets/hero-chip.png";
 
 export const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden noise-bg">
-      <GridBackground />
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <img 
+          src={heroChip} 
+          alt="AI Neural Network Chip" 
+          className="w-full h-full object-cover opacity-40"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
+      </div>
+
+      {/* Mesh gradient overlay */}
+      <div className="absolute inset-0 mesh-gradient" />
+
+      {/* Floating orbs */}
+      <motion.div
+        className="absolute w-[400px] h-[400px] rounded-full"
+        style={{
+          background: 'radial-gradient(circle, hsl(185 100% 50% / 0.15) 0%, transparent 70%)',
+          left: '5%',
+          top: '30%',
+        }}
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.3, 0.5, 0.3],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+      <motion.div
+        className="absolute w-[300px] h-[300px] rounded-full"
+        style={{
+          background: 'radial-gradient(circle, hsl(270 100% 65% / 0.1) 0%, transparent 70%)',
+          right: '10%',
+          bottom: '20%',
+        }}
+        animate={{
+          scale: [1.2, 1, 1.2],
+          opacity: [0.3, 0.5, 0.3],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
       
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="max-w-5xl mx-auto text-center">

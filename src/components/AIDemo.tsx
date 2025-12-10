@@ -1,31 +1,8 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Phone, Mic, Activity, MessageSquare, Send, Bot, User } from "lucide-react";
-
-// Audio waveform visualization
-const AudioWaveform = () => {
-  const bars = 24;
-  
-  return (
-    <div className="flex items-center justify-center gap-1 h-16">
-      {Array.from({ length: bars }).map((_, i) => (
-        <motion.div
-          key={i}
-          className="w-1 bg-gradient-to-t from-neon-cyan to-neon-purple rounded-full"
-          animate={{
-            height: [8, Math.random() * 40 + 20, 8],
-          }}
-          transition={{
-            duration: 0.8,
-            repeat: Infinity,
-            delay: i * 0.05,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
-    </div>
-  );
-};
+import { Phone, Mic, Activity, Bot, User, Send } from "lucide-react";
+import voiceWave from "@/assets/voice-wave.png";
+import chatInterface from "@/assets/chat-interface.png";
 
 // Animated chat messages
 const chatMessages = [
@@ -154,20 +131,25 @@ export const AIDemo = () => {
             </div>
             
             <div className="p-8">
-              {/* Voice visualization */}
-              <div className="relative">
-                <AudioWaveform />
-                
-                {/* Status indicators */}
-                <div className="mt-8 flex items-center justify-center gap-6">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Mic className="w-4 h-4 text-neon-cyan" />
-                    Listening...
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Activity className="w-4 h-4 text-neon-purple animate-pulse" />
-                    Processing
-                  </div>
+              {/* Voice visualization image */}
+              <div className="relative mb-6 rounded-xl overflow-hidden">
+                <img 
+                  src={voiceWave} 
+                  alt="Voice AI Waveform" 
+                  className="w-full h-40 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
+              </div>
+              
+              {/* Status indicators */}
+              <div className="flex items-center justify-center gap-6">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <Mic className="w-4 h-4 text-neon-cyan" />
+                  Listening...
+                </div>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <Activity className="w-4 h-4 text-neon-purple animate-pulse" />
+                  Processing
                 </div>
               </div>
 
@@ -193,9 +175,19 @@ export const AIDemo = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="glass-strong rounded-2xl overflow-hidden h-[500px]"
+            className="glass-strong rounded-2xl overflow-hidden h-[500px] relative"
           >
-            <ChatInterface />
+            {/* Background image overlay */}
+            <div className="absolute inset-0 opacity-10">
+              <img 
+                src={chatInterface} 
+                alt="Chat Interface" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="relative z-10 h-full">
+              <ChatInterface />
+            </div>
           </motion.div>
         </div>
       </div>
