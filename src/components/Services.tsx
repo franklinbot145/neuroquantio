@@ -1,0 +1,150 @@
+import { motion } from "framer-motion";
+import { 
+  Globe, 
+  MessageSquare, 
+  Server, 
+  Phone, 
+  Video, 
+  BarChart3,
+  ArrowUpRight
+} from "lucide-react";
+
+const services = [
+  {
+    icon: Globe,
+    title: "AI Web Development",
+    description: "Self-optimizing websites powered by neural networks.",
+    color: "from-neon-cyan to-neon-blue",
+    span: "md:col-span-2",
+  },
+  {
+    icon: MessageSquare,
+    title: "Embedded AI Chatbots",
+    description: "24/7 Support Agents trained on your specific data.",
+    color: "from-neon-purple to-neon-cyan",
+    span: "md:col-span-1",
+  },
+  {
+    icon: Server,
+    title: "Enterprise AI Infrastructure",
+    description: "Scalable LLM integration and local model hosting.",
+    color: "from-neon-blue to-neon-purple",
+    span: "md:col-span-1",
+  },
+  {
+    icon: Phone,
+    title: "Voice AI Bots",
+    description: "Human-like voice assistants for inbound/outbound calls.",
+    color: "from-neon-cyan to-neon-purple",
+    span: "md:col-span-2",
+  },
+  {
+    icon: Video,
+    title: "Organic Content Engine",
+    description: "AI-generated Reels and Shorts for viral growth.",
+    color: "from-neon-purple to-neon-blue",
+    span: "md:col-span-1",
+  },
+  {
+    icon: BarChart3,
+    title: "Performance Ads",
+    description: "Data-driven ad campaigns optimized by algorithms.",
+    color: "from-neon-blue to-neon-cyan",
+    span: "md:col-span-1",
+  },
+];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      ease: [0.4, 0, 0.2, 1] as const,
+    },
+  },
+};
+
+export const Services = () => {
+  return (
+    <section id="services" className="py-24 relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0 mesh-gradient opacity-50" />
+      
+      <div className="container mx-auto px-4 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+            Our <span className="neon-text">Solutions</span>
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Comprehensive AI services designed to transform every aspect of your business operations.
+          </p>
+        </motion.div>
+
+        {/* Bento Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 md:grid-cols-4 gap-4 lg:gap-6"
+        >
+          {services.map((service, index) => (
+            <motion.div
+              key={service.title}
+              variants={itemVariants}
+              className={`group relative ${service.span} rounded-2xl p-6 lg:p-8 glass-strong hover:border-neon-cyan/40 transition-all duration-500 cursor-pointer overflow-hidden`}
+            >
+              {/* Gradient background on hover */}
+              <div 
+                className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} 
+              />
+              
+              {/* Icon */}
+              <div className={`relative z-10 w-14 h-14 rounded-xl bg-gradient-to-br ${service.color} p-0.5 mb-6`}>
+                <div className="w-full h-full rounded-xl bg-background flex items-center justify-center">
+                  <service.icon className="w-6 h-6 text-neon-cyan" />
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="relative z-10">
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-xl font-semibold text-foreground group-hover:text-neon-cyan transition-colors">
+                    {service.title}
+                  </h3>
+                  <ArrowUpRight className="w-5 h-5 text-muted-foreground opacity-0 group-hover:opacity-100 group-hover:text-neon-cyan transition-all transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                </div>
+                <p className="text-muted-foreground leading-relaxed">
+                  {service.description}
+                </p>
+              </div>
+
+              {/* Corner glow effect */}
+              <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-neon-cyan/20 to-transparent rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
