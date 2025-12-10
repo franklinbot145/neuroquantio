@@ -53,7 +53,7 @@ export const Navbar = () => {
               <Zap className="relative w-6 h-6 text-primary-foreground" />
             </div>
             <span className="text-xl font-bold text-foreground">
-              Neural<span className="text-neon-cyan">Scale</span>
+              Neuro<span className="text-neon-cyan">quant</span>
             </span>
           </motion.a>
 
