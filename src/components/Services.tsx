@@ -8,6 +8,7 @@ import {
   BarChart3,
   ArrowUpRight
 } from "lucide-react";
+import aiBrain from "@/assets/ai-brain.png";
 
 const services = [
   {
@@ -83,6 +84,15 @@ export const Services = () => {
       {/* Background elements */}
       <div className="absolute inset-0 mesh-gradient opacity-50" />
       
+      {/* Floating AI brain image */}
+      <motion.div
+        className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] opacity-20 pointer-events-none hidden lg:block"
+        animate={{ y: [-20, 20, -20] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <img src={aiBrain} alt="AI Brain" className="w-full h-full object-contain" />
+      </motion.div>
+      
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Section Header */}
         <motion.div
@@ -108,7 +118,7 @@ export const Services = () => {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 md:grid-cols-4 gap-4 lg:gap-6"
         >
-          {services.map((service, index) => (
+          {services.map((service) => (
             <motion.div
               key={service.title}
               variants={itemVariants}
