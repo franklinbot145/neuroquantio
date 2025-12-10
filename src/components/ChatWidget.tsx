@@ -1,10 +1,18 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send, Bot, Sparkles } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { MessageCircle, X, Send, Bot } from "lucide-react";
 
 export const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
+  const { t } = useTranslation();
+
+  const quickActions = [
+    t("chatWidget.quickActions.infrastructure"),
+    t("chatWidget.quickActions.voiceBots"),
+    t("chatWidget.quickActions.pricing"),
+  ];
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
@@ -24,10 +32,10 @@ export const ChatWidget = () => {
                   <Bot className="w-5 h-5 text-primary-foreground" />
                 </div>
                 <div>
-                  <div className="font-semibold text-foreground">NeuralScale AI</div>
+                  <div className="font-semibold text-foreground">{t("chatWidget.title")}</div>
                   <div className="flex items-center gap-1 text-xs text-neon-cyan">
                     <span className="w-2 h-2 rounded-full bg-neon-cyan animate-pulse" />
-                    Online now
+                    {t("chatWidget.online")}
                   </div>
                 </div>
               </div>
@@ -49,11 +57,11 @@ export const ChatWidget = () => {
                 <div className="flex-1">
                   <div className="rounded-xl rounded-tl-sm px-4 py-3 bg-gradient-to-br from-neon-cyan/10 to-neon-purple/10 border border-neon-cyan/20">
                     <p className="text-sm text-foreground">
-                      👋 Hi there! I'm your AI assistant. How can I help you explore NeuralScale's solutions today?
+                      {t("chatWidget.welcome")}
                     </p>
                   </div>
                   <div className="mt-2 flex flex-wrap gap-2">
-                    {["AI Infrastructure", "Voice Bots", "Pricing"].map((quick) => (
+                    {quickActions.map((quick) => (
                       <button
                         key={quick}
                         className="px-3 py-1.5 text-xs rounded-full border border-neon-cyan/30 text-neon-cyan hover:bg-neon-cyan/10 transition-colors"
@@ -73,7 +81,7 @@ export const ChatWidget = () => {
                   type="text"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Ask me anything..."
+                  placeholder={t("chatWidget.placeholder")}
                   className="flex-1 bg-transparent text-sm outline-none text-foreground placeholder:text-muted-foreground"
                 />
                 <button className="w-9 h-9 rounded-lg bg-gradient-to-r from-neon-cyan to-neon-purple flex items-center justify-center hover:shadow-[0_0_20px_hsl(185_100%_50%/0.4)] transition-shadow">
@@ -81,7 +89,7 @@ export const ChatWidget = () => {
                 </button>
               </div>
               <p className="text-xs text-muted-foreground text-center mt-2">
-                Powered by NeuralScale AI
+                {t("chatWidget.poweredBy")}
               </p>
             </div>
           </motion.div>

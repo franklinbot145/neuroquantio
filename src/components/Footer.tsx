@@ -1,27 +1,7 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { Zap, Twitter, Linkedin, Github, Mail, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const footerLinks = {
-  solutions: [
-    { name: "AI Infrastructure", href: "#" },
-    { name: "Voice AI", href: "#" },
-    { name: "Chatbots", href: "#" },
-    { name: "Content Engine", href: "#" },
-  ],
-  company: [
-    { name: "About Us", href: "#" },
-    { name: "Careers", href: "#" },
-    { name: "Blog", href: "#" },
-    { name: "Contact", href: "#" },
-  ],
-  resources: [
-    { name: "Documentation", href: "#" },
-    { name: "API Reference", href: "#" },
-    { name: "Case Studies", href: "#" },
-    { name: "Support", href: "#" },
-  ],
-};
 
 const socialLinks = [
   { icon: Twitter, href: "#", label: "Twitter" },
@@ -30,6 +10,29 @@ const socialLinks = [
 ];
 
 export const Footer = () => {
+  const { t } = useTranslation();
+
+  const footerLinks = {
+    solutions: [
+      { name: t("footer.links.aiInfrastructure"), href: "#" },
+      { name: t("footer.links.voiceAI"), href: "#" },
+      { name: t("footer.links.chatbots"), href: "#" },
+      { name: t("footer.links.contentEngine"), href: "#" },
+    ],
+    company: [
+      { name: t("footer.links.aboutUs"), href: "#" },
+      { name: t("footer.links.careers"), href: "#" },
+      { name: t("footer.links.blog"), href: "#" },
+      { name: t("footer.links.contact"), href: "#" },
+    ],
+    resources: [
+      { name: t("footer.links.documentation"), href: "#" },
+      { name: t("footer.links.apiReference"), href: "#" },
+      { name: t("footer.links.caseStudies"), href: "#" },
+      { name: t("footer.links.support"), href: "#" },
+    ],
+  };
+
   return (
     <footer id="contact" className="relative pt-24 pb-8 overflow-hidden">
       {/* Background gradient */}
@@ -49,14 +52,14 @@ export const Footer = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan/10 via-neon-purple/10 to-neon-blue/10" />
           <div className="relative z-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to <span className="neon-text">Transform</span> Your Business?
+              {t("footer.cta.title")} <span className="neon-text">{t("footer.cta.titleHighlight")}</span>{t("footer.cta.titleEnd")}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-              Schedule a free consultation with our AI specialists and discover how NeuralScale can accelerate your digital transformation.
+              {t("footer.cta.subtitle")}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button variant="hero" size="lg" className="group">
-                Schedule Consultation
+                {t("footer.cta.button")}
                 <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Button>
               <Button variant="heroOutline" size="lg">
@@ -80,7 +83,7 @@ export const Footer = () => {
               </span>
             </a>
             <p className="text-muted-foreground text-sm max-w-xs mb-6">
-              Building the neural infrastructure of tomorrow's enterprises. AI-first solutions for the modern business.
+              {t("footer.brand.tagline")}
             </p>
             <div className="flex items-center gap-4">
               {socialLinks.map((social) => (
@@ -98,7 +101,7 @@ export const Footer = () => {
 
           {/* Links */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Solutions</h4>
+            <h4 className="font-semibold text-foreground mb-4">{t("footer.links.solutions")}</h4>
             <ul className="space-y-2">
               {footerLinks.solutions.map((link) => (
                 <li key={link.name}>
@@ -111,7 +114,7 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Company</h4>
+            <h4 className="font-semibold text-foreground mb-4">{t("footer.links.company")}</h4>
             <ul className="space-y-2">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
@@ -124,7 +127,7 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Resources</h4>
+            <h4 className="font-semibold text-foreground mb-4">{t("footer.links.resources")}</h4>
             <ul className="space-y-2">
               {footerLinks.resources.map((link) => (
                 <li key={link.name}>
@@ -140,12 +143,12 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} NeuralScale. All rights reserved.
+            © {new Date().getFullYear()} NeuralScale. {t("footer.legal.rights")}
           </p>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-foreground transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-foreground transition-colors">Cookie Settings</a>
+            <a href="#" className="hover:text-foreground transition-colors">{t("footer.legal.privacy")}</a>
+            <a href="#" className="hover:text-foreground transition-colors">{t("footer.legal.terms")}</a>
+            <a href="#" className="hover:text-foreground transition-colors">{t("footer.legal.cookies")}</a>
           </div>
         </div>
       </div>

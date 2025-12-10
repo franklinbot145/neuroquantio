@@ -1,22 +1,25 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Zap } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useAuth } from "@/contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
-
-const navLinks = [
-  { name: "Services", href: "#services" },
-  { name: "Solutions", href: "#demo" },
-  { name: "Process", href: "#process" },
-  { name: "Contact", href: "#contact" },
-];
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { user } = useAuth();
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
+  const navLinks = [
+    { name: t("nav.services"), href: "#services" },
+    { name: t("nav.solutions"), href: "#demo" },
+    { name: t("nav.process"), href: "#process" },
+    { name: t("nav.contact"), href: "#contact" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -71,19 +74,20 @@ export const Navbar = () => {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* Right side */}
+          <div className="hidden md:flex items-center gap-4">
+            <LanguageSwitcher />
             {user ? (
               <Button variant="neon" onClick={() => navigate("/dashboard")}>
-                Dashboard
+                {t("nav.dashboard")}
               </Button>
             ) : (
               <>
                 <Button variant="ghost" onClick={() => navigate("/auth")}>
-                  Sign In
+                  {t("nav.signIn")}
                 </Button>
                 <Button variant="neon" onClick={() => navigate("/auth")}>
-                  Get Started
+                  {t("nav.getStarted")}
                 </Button>
               </>
             )}
@@ -119,13 +123,16 @@ export const Navbar = () => {
                   {link.name}
                 </a>
               ))}
+              <div className="py-2">
+                <LanguageSwitcher />
+              </div>
               {user ? (
                 <Button variant="neon" className="mt-4" onClick={() => navigate("/dashboard")}>
-                  Dashboard
+                  {t("nav.dashboard")}
                 </Button>
               ) : (
                 <Button variant="neon" className="mt-4" onClick={() => navigate("/auth")}>
-                  Get Started
+                  {t("nav.getStarted")}
                 </Button>
               )}
             </div>

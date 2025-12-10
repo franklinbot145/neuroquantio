@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { 
   Zap, 
   LogOut, 
@@ -18,6 +19,7 @@ import {
   AlertCircle
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
@@ -49,21 +51,22 @@ const serviceColors: Record<string, string> = {
   "Performance Ads": "from-neon-blue to-neon-cyan",
 };
 
-const availableServices = [
-  { name: "AI Web Development", type: "web", description: "Self-optimizing websites" },
-  { name: "Embedded AI Chatbots", type: "chat", description: "24/7 AI support agents" },
-  { name: "Enterprise AI Infrastructure", type: "infrastructure", description: "Scalable LLM integration" },
-  { name: "Voice AI Bots", type: "voice", description: "Human-like voice assistants" },
-  { name: "Organic Content Engine", type: "content", description: "AI-generated viral content" },
-  { name: "Performance Ads", type: "ads", description: "Algorithm-optimized campaigns" },
-];
-
 export default function Dashboard() {
   const { user, loading, signOut } = useAuth();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [services, setServices] = useState<UserService[]>([]);
   const [loadingServices, setLoadingServices] = useState(true);
   const [addingService, setAddingService] = useState<string | null>(null);
+
+  const availableServices = [
+    { name: "AI Web Development", type: "web", descKey: "services.items.webDev.description" },
+    { name: "Embedded AI Chatbots", type: "chat", descKey: "services.items.chatbots.description" },
+    { name: "Enterprise AI Infrastructure", type: "infrastructure", descKey: "services.items.infrastructure.description" },
+    { name: "Voice AI Bots", type: "voice", descKey: "services.items.voice.description" },
+    { name: "Organic Content Engine", type: "content", descKey: "services.items.content.description" },
+    { name: "Performance Ads", type: "ads", descKey: "services.items.ads.description" },
+  ];
 
   useEffect(() => {
     if (!loading && !user) {
@@ -108,8 +111,8 @@ export default function Dashboard() {
       if (error) {
         if (error.message.includes("duplicate")) {
           toast({
-            title: "Service already added",
-            description: "You already have this service in your dashboard.",
+            title: t("dashboard.alreadyAdded"),
+            description: t("dashboard.alreadyAddedDesc"),
             variant: "destructive",
           });
         } else {
@@ -117,8 +120,8 @@ export default function Dashboard() {
         }
       } else {
         toast({
-          title: "Service added!",
-          description: `${serviceName} has been added to your dashboard.`,
+          title: t("dashboard.serviceAdded"),
+          description: `${serviceName} ${t("dashboard.serviceAddedDesc")}`,
         });
         fetchServices();
       }
@@ -167,6 +170,7 @@ export default function Dashboard() {
           </a>
 
           <div className="flex items-center gap-4">
+            <LanguageSwitcher />
             <span className="text-sm text-muted-foreground hidden sm:block">
               {user?.email}
             </span>
@@ -185,10 +189,10 @@ export default function Dashboard() {
           className="mb-8"
         >
           <h1 className="text-3xl font-bold mb-2">
-            Welcome to your <span className="neon-text">Dashboard</span>
+            {t("dashboard.welcome")} <span className="neon-text">{t("dashboard.welcomeHighlight")}</span>
           </h1>
           <p className="text-muted-foreground">
-            Manage and monitor your active AI services
+            {t("dashboard.subtitle")}
           </p>
         </motion.div>
 
@@ -200,10 +204,10 @@ export default function Dashboard() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8"
         >
           {[
-            { icon: Activity, label: "Active Services", value: services.filter(s => s.status === 'active').length.toString(), color: "text-neon-cyan" },
-            { icon: Clock, label: "Uptime", value: "99.9%", color: "text-neon-purple" },
-            { icon: CheckCircle, label: "Tasks Completed", value: "1,234", color: "text-green-400" },
-            { icon: AlertCircle, label: "Pending", value: "3", color: "text-yellow-400" },
+            { icon: Activity, label: t("dashboard.stats.activeServices"), value: services.filter(s => s.status === 'active').length.toString(), color: "text-neon-cyan" },
+            { icon: Clock, label: t("dashboard.stats.uptime"), value: "99.9%", color: "text-neon-purple" },
+            { icon: CheckCircle, label: t("dashboard.stats.tasksCompleted"), value: "1,234", color: "text-green-400" },
+            { icon: AlertCircle, label: t("dashboard.stats.pending"), value: "3", color: "text-yellow-400" },
           ].map((stat, index) => (
             <motion.div
               key={stat.label}
@@ -232,7 +236,7 @@ export default function Dashboard() {
           transition={{ delay: 0.2 }}
           className="mb-8"
         >
-          <h2 className="text-xl font-semibold mb-4">Your Active Services</h2>
+          <h2 className="text-xl font-semibold mb-4">{t("dashboard.activeServices")}</h2>
           
           {loadingServices ? (
             <div className="flex items-center justify-center py-12">
@@ -241,7 +245,7 @@ export default function Dashboard() {
           ) : services.length === 0 ? (
             <div className="glass-strong rounded-xl p-8 text-center">
               <p className="text-muted-foreground mb-4">
-                You haven't added any services yet. Get started by adding your first AI service below.
+                {t("dashboard.noServices")}
               </p>
             </div>
           ) : (
@@ -275,7 +279,7 @@ export default function Dashboard() {
 
                     <div className="flex items-center justify-between">
                       <span className="text-xs text-muted-foreground">
-                        Added {new Date(service.created_at).toLocaleDateString()}
+                        {t("dashboard.added")} {new Date(service.created_at).toLocaleDateString()}
                       </span>
                       <Button variant="ghost" size="icon" className="opacity-0 group-hover:opacity-100 transition-opacity">
                         <Settings className="w-4 h-4" />
@@ -295,7 +299,7 @@ export default function Dashboard() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <h2 className="text-xl font-semibold mb-4">Add New Service</h2>
+            <h2 className="text-xl font-semibold mb-4">{t("dashboard.addNew")}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {availableToAdd.map((service, index) => {
                 const Icon = serviceIcons[service.name] || Server;
@@ -317,7 +321,7 @@ export default function Dashboard() {
                     </div>
                     
                     <h3 className="font-semibold text-foreground mb-1">{service.name}</h3>
-                    <p className="text-sm text-muted-foreground mb-4">{service.description}</p>
+                    <p className="text-sm text-muted-foreground mb-4">{t(service.descKey)}</p>
 
                     <Button
                       variant="glass"
@@ -331,7 +335,7 @@ export default function Dashboard() {
                       ) : (
                         <>
                           <Plus className="w-4 h-4" />
-                          Add Service
+                          {t("dashboard.addService")}
                         </>
                       )}
                     </Button>

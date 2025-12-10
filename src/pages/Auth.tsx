@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { z } from "zod";
 import { Zap, Mail, Lock, ArrowRight, Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "@/hooks/use-toast";
 
@@ -21,6 +23,7 @@ export default function Auth() {
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
   const { signIn, signUp } = useAuth();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,21 +49,21 @@ export default function Auth() {
         if (error) {
           if (error.message.includes("Invalid login credentials")) {
             toast({
-              title: "Login failed",
-              description: "Invalid email or password. Please try again.",
+              title: t("auth.errors.loginFailed"),
+              description: t("auth.errors.invalidCredentials"),
               variant: "destructive",
             });
           } else {
             toast({
-              title: "Login failed",
+              title: t("auth.errors.loginFailed"),
               description: error.message,
               variant: "destructive",
             });
           }
         } else {
           toast({
-            title: "Welcome back!",
-            description: "You have successfully logged in.",
+            title: t("auth.success.welcomeBack"),
+            description: t("auth.success.loggedIn"),
           });
           navigate("/dashboard");
         }
@@ -69,21 +72,21 @@ export default function Auth() {
         if (error) {
           if (error.message.includes("already registered")) {
             toast({
-              title: "Signup failed",
-              description: "This email is already registered. Please log in instead.",
+              title: t("auth.errors.signupFailed"),
+              description: t("auth.errors.alreadyRegistered"),
               variant: "destructive",
             });
           } else {
             toast({
-              title: "Signup failed",
+              title: t("auth.errors.signupFailed"),
               description: error.message,
               variant: "destructive",
             });
           }
         } else {
           toast({
-            title: "Account created!",
-            description: "Welcome to NeuralScale. You are now logged in.",
+            title: t("auth.success.accountCreated"),
+            description: t("auth.success.welcomeNew"),
           });
           navigate("/dashboard");
         }
@@ -117,6 +120,11 @@ export default function Auth() {
         transition={{ duration: 0.6 }}
         className="relative z-10 w-full max-w-md"
       >
+        {/* Language Switcher */}
+        <div className="flex justify-center mb-6">
+          <LanguageSwitcher />
+        </div>
+
         {/* Logo */}
         <a href="/" className="flex items-center justify-center gap-2 mb-8">
           <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-neon-cyan to-neon-purple flex items-center justify-center">
@@ -130,19 +138,17 @@ export default function Auth() {
         {/* Auth Card */}
         <div className="glass-strong rounded-2xl p-8">
           <h1 className="text-2xl font-bold text-center mb-2">
-            {isLogin ? "Welcome back" : "Create your account"}
+            {isLogin ? t("auth.welcomeBack") : t("auth.createAccount")}
           </h1>
           <p className="text-muted-foreground text-center mb-8">
-            {isLogin
-              ? "Sign in to access your AI dashboard"
-              : "Get started with NeuralScale today"}
+            {isLogin ? t("auth.signInSubtitle") : t("auth.signUpSubtitle")}
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Email */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                Email address
+                {t("auth.email")}
               </label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
@@ -154,7 +160,7 @@ export default function Auth() {
                   className={`w-full pl-10 pr-4 py-3 bg-muted/50 border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-neon-cyan/50 focus:border-neon-cyan transition-all ${
                     errors.email ? "border-destructive" : "border-border"
                   }`}
-                  placeholder="you@example.com"
+                  placeholder={t("auth.emailPlaceholder")}
                 />
               </div>
               {errors.email && (
@@ -165,7 +171,7 @@ export default function Auth() {
             {/* Password */}
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-foreground mb-2">
-                Password
+                {t("auth.password")}
               </label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
@@ -204,7 +210,7 @@ export default function Auth() {
                 <div className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
               ) : (
                 <>
-                  {isLogin ? "Sign in" : "Create account"}
+                  {isLogin ? t("auth.signIn") : t("auth.createAccountBtn")}
                   <ArrowRight className="w-5 h-5" />
                 </>
               )}
@@ -213,12 +219,12 @@ export default function Auth() {
 
           {/* Toggle */}
           <p className="text-center text-muted-foreground mt-6">
-            {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
+            {isLogin ? t("auth.noAccount") : t("auth.hasAccount")}{" "}
             <button
               onClick={() => setIsLogin(!isLogin)}
               className="text-neon-cyan hover:underline font-medium"
             >
-              {isLogin ? "Sign up" : "Sign in"}
+              {isLogin ? t("auth.signUp") : t("auth.signIn")}
             </button>
           </p>
         </div>
@@ -226,7 +232,7 @@ export default function Auth() {
         {/* Back to home */}
         <p className="text-center text-muted-foreground mt-6">
           <a href="/" className="hover:text-foreground transition-colors">
-            ← Back to home
+            ← {t("auth.backToHome")}
           </a>
         </p>
       </motion.div>

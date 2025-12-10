@@ -1,26 +1,27 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Phone, Mic, Activity, Bot, User, Send } from "lucide-react";
 import voiceWave from "@/assets/voice-wave.png";
 import chatInterface from "@/assets/chat-interface.png";
 
-// Animated chat messages
-const chatMessages = [
-  { role: "user", text: "What's my current order status?" },
-  { role: "bot", text: "Let me check that for you. Order #47291 is currently in transit and will arrive by tomorrow." },
-  { role: "user", text: "Can I change the delivery address?" },
-  { role: "bot", text: "Of course! I've updated your delivery address. You'll receive a confirmation email shortly." },
-];
-
 const ChatInterface = () => {
+  const { t } = useTranslation();
   const [visibleMessages, setVisibleMessages] = useState<number>(0);
+
+  const chatMessages = [
+    { role: "user", text: t("demo.chat.messages.user1") },
+    { role: "bot", text: t("demo.chat.messages.bot1") },
+    { role: "user", text: t("demo.chat.messages.user2") },
+    { role: "bot", text: t("demo.chat.messages.bot2") },
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setVisibleMessages((prev) => (prev < chatMessages.length ? prev + 1 : 0));
     }, 2000);
     return () => clearInterval(interval);
-  }, []);
+  }, [chatMessages.length]);
 
   return (
     <div className="flex flex-col h-full">
@@ -30,10 +31,10 @@ const ChatInterface = () => {
           <Bot className="w-5 h-5 text-primary-foreground" />
         </div>
         <div>
-          <div className="font-semibold text-foreground text-sm">NeuralScale AI</div>
+          <div className="font-semibold text-foreground text-sm">{t("demo.chat.assistant")}</div>
           <div className="flex items-center gap-1 text-xs text-neon-cyan">
             <span className="w-2 h-2 rounded-full bg-neon-cyan animate-pulse" />
-            Analyzing...
+            {t("demo.chat.analyzing")}
           </div>
         </div>
       </div>
@@ -74,7 +75,7 @@ const ChatInterface = () => {
         <div className="flex items-center gap-2 bg-muted/50 rounded-xl px-4 py-2">
           <input
             type="text"
-            placeholder="Type a message..."
+            placeholder={t("demo.chat.placeholder")}
             className="flex-1 bg-transparent text-sm outline-none text-foreground placeholder:text-muted-foreground"
           />
           <button className="w-8 h-8 rounded-lg bg-gradient-to-r from-neon-cyan to-neon-purple flex items-center justify-center">
@@ -87,6 +88,8 @@ const ChatInterface = () => {
 };
 
 export const AIDemo = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="demo" className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 mesh-gradient opacity-30" />
@@ -101,10 +104,10 @@ export const AIDemo = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            See AI in <span className="neon-text">Action</span>
+            {t("demo.title")} <span className="neon-text">{t("demo.titleHighlight")}</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Experience the power of our Voice AI and Chat solutions with real-time demonstrations.
+            {t("demo.subtitle")}
           </p>
         </motion.div>
 
@@ -124,8 +127,8 @@ export const AIDemo = () => {
                   <Phone className="w-6 h-6 text-primary-foreground" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-foreground">Voice AI Bot</h3>
-                  <p className="text-sm text-muted-foreground">Real-time voice processing</p>
+                  <h3 className="text-xl font-semibold text-foreground">{t("demo.voiceBot.title")}</h3>
+                  <p className="text-sm text-muted-foreground">{t("demo.voiceBot.subtitle")}</p>
                 </div>
               </div>
             </div>
@@ -145,20 +148,20 @@ export const AIDemo = () => {
               <div className="flex items-center justify-center gap-6">
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <Mic className="w-4 h-4 text-neon-cyan" />
-                  Listening...
+                  {t("demo.voiceBot.listening")}
                 </div>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <Activity className="w-4 h-4 text-neon-purple animate-pulse" />
-                  Processing
+                  {t("demo.voiceBot.processing")}
                 </div>
               </div>
 
               {/* Metrics */}
               <div className="mt-8 grid grid-cols-3 gap-4">
                 {[
-                  { label: "Latency", value: "120ms" },
-                  { label: "Accuracy", value: "99.2%" },
-                  { label: "Languages", value: "47+" },
+                  { label: t("demo.voiceBot.latency"), value: "120ms" },
+                  { label: t("demo.voiceBot.accuracy"), value: "99.2%" },
+                  { label: t("demo.voiceBot.languages"), value: "47+" },
                 ].map((metric) => (
                   <div key={metric.label} className="text-center p-3 rounded-xl bg-muted/30">
                     <div className="text-lg font-bold text-neon-cyan">{metric.value}</div>
