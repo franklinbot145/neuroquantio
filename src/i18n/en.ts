@@ -129,7 +129,7 @@ export const en = {
         titleHighlight: "Transform",
         titleEnd: "Your Business?",
         subtitle: "Schedule a free consultation with our AI specialists and discover how Neuroquant can accelerate your digital transformation.",
-        button: "Schedule Consultation",
+        button: "Schedule Appointment",
       },
       brand: {
         tagline: "Building the neural infrastructure of tomorrow's enterprises. AI-first solutions for the modern business.",

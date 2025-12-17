@@ -129,7 +129,7 @@ export const de = {
         titleHighlight: "Unternehmen zu transformieren",
         titleEnd: "?",
         subtitle: "Vereinbaren Sie eine kostenlose Beratung mit unseren KI-Spezialisten und entdecken Sie, wie Neuroquant Ihre digitale Transformation beschleunigen kann.",
-        button: "Beratung vereinbaren",
+        button: "Beratungstermin vereinbaren",
       },
       brand: {
         tagline: "Wir bauen die neuronale Infrastruktur der Unternehmen von morgen. KI-first Lösungen für das moderne Geschäft.",

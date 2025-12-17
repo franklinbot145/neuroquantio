@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Zap, Twitter, Linkedin, Github, Mail, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ConsultationDialog } from "@/components/ConsultationDialog";
 
 const socialLinks = [
   { icon: Twitter, href: "#", label: "Twitter" },
@@ -11,6 +13,7 @@ const socialLinks = [
 
 export const Footer = () => {
   const { t } = useTranslation();
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   const footerLinks = {
     solutions: [
@@ -58,13 +61,15 @@ export const Footer = () => {
               {t("footer.cta.subtitle")}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button variant="hero" size="lg" className="group">
+              <Button variant="hero" size="lg" className="group" onClick={() => setDialogOpen(true)}>
                 {t("footer.cta.button")}
                 <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Button>
-              <Button variant="heroOutline" size="lg">
-                <Mail className="w-5 h-5" />
-                hello@neuroquant.ai
+              <Button variant="heroOutline" size="lg" asChild>
+                <a href="mailto:info@neuroquant.io">
+                  <Mail className="w-5 h-5" />
+                  info@neuroquant.io
+                </a>
               </Button>
             </div>
           </div>
@@ -152,6 +157,8 @@ export const Footer = () => {
           </div>
         </div>
       </div>
+
+      <ConsultationDialog open={dialogOpen} onOpenChange={setDialogOpen} />
     </footer>
   );
 };
