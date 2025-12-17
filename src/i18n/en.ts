@@ -15,7 +15,7 @@ export const en = {
     hero: {
       badge: "Next-Generation AI Solutions",
       headline1: "Architecting the",
-      headline2: "Intelligent",
+      headline2: "intelligent",
       headline3: "Enterprise",
       subheadline: "From AI Infrastructure to Voice Agents – We build the brain of your business. Transform operations with cutting-edge neural networks and automation.",
       cta1: "Audit your Infrastructure",
