@@ -15,7 +15,7 @@ export const de = {
     hero: {
       badge: "KI-Lösungen der nächsten Generation",
       headline1: "Architektur des",
-      headline2: "Intelligenten",
+      headline2: "intelligenten",
       headline3: "Unternehmens",
       subheadline: "Von KI-Infrastruktur bis zu Sprachassistenten – Wir bauen das Gehirn Ihres Unternehmens. Transformieren Sie Ihre Abläufe mit modernsten neuronalen Netzwerken und Automatisierung.",
       cta1: "Infrastruktur-Audit",
