@@ -1,11 +1,14 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import heroChip from "@/assets/hero-chip.png";
+import { ConsultationDialog } from "@/components/ConsultationDialog";
 
 export const Hero = () => {
   const { t } = useTranslation();
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden noise-bg">
@@ -116,7 +119,7 @@ export const Hero = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <Button variant="hero" size="xl" className="group">
+            <Button variant="hero" size="xl" className="group" onClick={() => setDialogOpen(true)}>
               {t("hero.cta1")}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
@@ -163,6 +166,8 @@ export const Hero = () => {
 
       {/* Bottom gradient fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+
+      <ConsultationDialog open={dialogOpen} onOpenChange={setDialogOpen} />
     </section>
   );
 };
