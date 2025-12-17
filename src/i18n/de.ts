@@ -154,6 +154,7 @@ export const de = {
       },
       legal: {
         rights: "Alle Rechte vorbehalten.",
+        imprint: "Impressum",
         privacy: "Datenschutz",
         terms: "Nutzungsbedingungen",
         cookies: "Cookie-Einstellungen",
