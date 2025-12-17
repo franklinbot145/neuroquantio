@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import { Zap, Twitter, Linkedin, Github, Mail, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ConsultationDialog } from "@/components/ConsultationDialog";
@@ -151,9 +152,10 @@ export const Footer = () => {
             © {new Date().getFullYear()} Neuroquant. {t("footer.legal.rights")}
           </p>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <a href="#" className="hover:text-foreground transition-colors">{t("footer.legal.privacy")}</a>
-            <a href="#" className="hover:text-foreground transition-colors">{t("footer.legal.terms")}</a>
-            <a href="#" className="hover:text-foreground transition-colors">{t("footer.legal.cookies")}</a>
+            <Link to="/impressum" className="hover:text-foreground transition-colors">{t("footer.legal.imprint")}</Link>
+            <Link to="/datenschutz" className="hover:text-foreground transition-colors">{t("footer.legal.privacy")}</Link>
+            <Link to="/nutzungsbedingungen" className="hover:text-foreground transition-colors">{t("footer.legal.terms")}</Link>
+            <Link to="/cookies" className="hover:text-foreground transition-colors">{t("footer.legal.cookies")}</Link>
           </div>
         </div>
       </div>

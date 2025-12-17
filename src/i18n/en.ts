@@ -154,6 +154,7 @@ export const en = {
       },
       legal: {
         rights: "All rights reserved.",
+        imprint: "Legal Notice",
         privacy: "Privacy Policy",
         terms: "Terms of Service",
         cookies: "Cookie Settings",
