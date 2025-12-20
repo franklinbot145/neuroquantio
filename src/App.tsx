@@ -12,6 +12,12 @@ import Datenschutz from "./pages/Datenschutz";
 import Nutzungsbedingungen from "./pages/Nutzungsbedingungen";
 import Cookies from "./pages/Cookies";
 import NotFound from "./pages/NotFound";
+import KiWebentwicklung from "./pages/solutions/KiWebentwicklung";
+import KiChatbots from "./pages/solutions/KiChatbots";
+import KiInfrastruktur from "./pages/solutions/KiInfrastruktur";
+import SprachKi from "./pages/solutions/SprachKi";
+import ContentEngine from "./pages/solutions/ContentEngine";
+import PerformanceAds from "./pages/solutions/PerformanceAds";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +36,12 @@ const App = () => (
             <Route path="/datenschutz" element={<Datenschutz />} />
             <Route path="/nutzungsbedingungen" element={<Nutzungsbedingungen />} />
             <Route path="/cookies" element={<Cookies />} />
+            <Route path="/loesungen/ki-webentwicklung" element={<KiWebentwicklung />} />
+            <Route path="/loesungen/ki-chatbots" element={<KiChatbots />} />
+            <Route path="/loesungen/ki-infrastruktur" element={<KiInfrastruktur />} />
+            <Route path="/loesungen/sprach-ki" element={<SprachKi />} />
+            <Route path="/loesungen/content-engine" element={<ContentEngine />} />
+            <Route path="/loesungen/performance-ads" element={<PerformanceAds />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
