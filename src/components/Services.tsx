@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import { 
   Globe, 
   MessageSquare, 
@@ -44,6 +45,7 @@ export const Services = () => {
       descKey: "services.items.webDev.description",
       color: "from-neon-cyan to-neon-blue",
       span: "md:col-span-2",
+      link: "/loesungen/ki-webentwicklung",
     },
     {
       icon: MessageSquare,
@@ -51,6 +53,7 @@ export const Services = () => {
       descKey: "services.items.chatbots.description",
       color: "from-neon-purple to-neon-cyan",
       span: "md:col-span-1",
+      link: "/loesungen/ki-chatbots",
     },
     {
       icon: Server,
@@ -58,6 +61,7 @@ export const Services = () => {
       descKey: "services.items.infrastructure.description",
       color: "from-neon-blue to-neon-purple",
       span: "md:col-span-1",
+      link: "/loesungen/ki-infrastruktur",
     },
     {
       icon: Phone,
@@ -65,6 +69,7 @@ export const Services = () => {
       descKey: "services.items.voice.description",
       color: "from-neon-cyan to-neon-purple",
       span: "md:col-span-2",
+      link: "/loesungen/sprach-ki",
     },
     {
       icon: Video,
@@ -72,6 +77,7 @@ export const Services = () => {
       descKey: "services.items.content.description",
       color: "from-neon-purple to-neon-blue",
       span: "md:col-span-1",
+      link: "/loesungen/content-engine",
     },
     {
       icon: BarChart3,
@@ -79,6 +85,7 @@ export const Services = () => {
       descKey: "services.items.ads.description",
       color: "from-neon-blue to-neon-cyan",
       span: "md:col-span-1",
+      link: "/loesungen/performance-ads",
     },
   ];
 
@@ -125,35 +132,40 @@ export const Services = () => {
             <motion.div
               key={service.titleKey}
               variants={itemVariants}
-              className={`group relative ${service.span} rounded-2xl p-6 lg:p-8 glass-strong hover:border-neon-cyan/40 transition-all duration-500 cursor-pointer overflow-hidden`}
+              className={service.span}
             >
-              {/* Gradient background on hover */}
-              <div 
-                className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} 
-              />
-              
-              {/* Icon */}
-              <div className={`relative z-10 w-14 h-14 rounded-xl bg-gradient-to-br ${service.color} p-0.5 mb-6`}>
-                <div className="w-full h-full rounded-xl bg-background flex items-center justify-center">
-                  <service.icon className="w-6 h-6 text-neon-cyan" />
+              <Link
+                to={service.link}
+                className="group relative block h-full rounded-2xl p-6 lg:p-8 glass-strong hover:border-neon-cyan/40 transition-all duration-500 cursor-pointer overflow-hidden"
+              >
+                {/* Gradient background on hover */}
+                <div 
+                  className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} 
+                />
+                
+                {/* Icon */}
+                <div className={`relative z-10 w-14 h-14 rounded-xl bg-gradient-to-br ${service.color} p-0.5 mb-6`}>
+                  <div className="w-full h-full rounded-xl bg-background flex items-center justify-center">
+                    <service.icon className="w-6 h-6 text-neon-cyan" />
+                  </div>
                 </div>
-              </div>
 
-              {/* Content */}
-              <div className="relative z-10">
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-xl font-semibold text-foreground group-hover:text-neon-cyan transition-colors">
-                    {t(service.titleKey)}
-                  </h3>
-                  <ArrowUpRight className="w-5 h-5 text-muted-foreground opacity-0 group-hover:opacity-100 group-hover:text-neon-cyan transition-all transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                {/* Content */}
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="text-xl font-semibold text-foreground group-hover:text-neon-cyan transition-colors">
+                      {t(service.titleKey)}
+                    </h3>
+                    <ArrowUpRight className="w-5 h-5 text-muted-foreground opacity-0 group-hover:opacity-100 group-hover:text-neon-cyan transition-all transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {t(service.descKey)}
+                  </p>
                 </div>
-                <p className="text-muted-foreground leading-relaxed">
-                  {t(service.descKey)}
-                </p>
-              </div>
 
-              {/* Corner glow effect */}
-              <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-neon-cyan/20 to-transparent rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                {/* Corner glow effect */}
+                <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-neon-cyan/20 to-transparent rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </Link>
             </motion.div>
           ))}
         </motion.div>
