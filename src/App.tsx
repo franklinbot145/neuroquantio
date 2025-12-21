@@ -12,6 +12,7 @@ import Datenschutz from "./pages/Datenschutz";
 import Nutzungsbedingungen from "./pages/Nutzungsbedingungen";
 import Cookies from "./pages/Cookies";
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./components/ScrollToTop";
 import KiWebentwicklung from "./pages/solutions/KiWebentwicklung";
 import KiChatbots from "./pages/solutions/KiChatbots";
 import KiInfrastruktur from "./pages/solutions/KiInfrastruktur";
@@ -28,6 +29,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/auth" element={<Auth />} />
