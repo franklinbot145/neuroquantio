@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { 
-  Zap, 
   LogOut, 
   Plus, 
   Globe, 
@@ -19,6 +18,7 @@ import {
   AlertCircle
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import neuroquantLogo from "@/assets/neuroquant-logo.png";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
@@ -161,12 +161,11 @@ export default function Dashboard() {
       <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
         <div className="container mx-auto px-4 lg:px-8 h-16 flex items-center justify-between">
           <a href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-neon-cyan to-neon-purple flex items-center justify-center">
-              <Zap className="w-5 h-5 text-primary-foreground" />
-            </div>
-            <span className="text-xl font-bold text-foreground">
-              Neural<span className="text-neon-cyan">Scale</span>
-            </span>
+            <img 
+              src={neuroquantLogo} 
+              alt="NeuroQuant Logo" 
+              className="h-10 w-auto object-contain"
+            />
           </a>
 
           <div className="flex items-center gap-4">

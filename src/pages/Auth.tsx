@@ -3,8 +3,9 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { z } from "zod";
-import { Zap, Mail, Lock, ArrowRight, Eye, EyeOff } from "lucide-react";
+import { Mail, Lock, ArrowRight, Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import neuroquantLogo from "@/assets/neuroquant-logo.png";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "@/hooks/use-toast";
@@ -126,13 +127,12 @@ export default function Auth() {
         </div>
 
         {/* Logo */}
-        <a href="/" className="flex items-center justify-center gap-2 mb-8">
-          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-neon-cyan to-neon-purple flex items-center justify-center">
-            <Zap className="w-6 h-6 text-primary-foreground" />
-          </div>
-          <span className="text-2xl font-bold text-foreground">
-            Neural<span className="text-neon-cyan">Scale</span>
-          </span>
+        <a href="/" className="flex items-center justify-center mb-8">
+          <img 
+            src={neuroquantLogo} 
+            alt="NeuroQuant Logo" 
+            className="h-14 w-auto object-contain"
+          />
         </a>
 
         {/* Auth Card */}

@@ -2,8 +2,9 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { Zap, Twitter, Linkedin, Github, Mail, ArrowUpRight } from "lucide-react";
+import { Twitter, Linkedin, Github, Mail, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import neuroquantLogo from "@/assets/neuroquant-logo.png";
 import { ConsultationDialog } from "@/components/ConsultationDialog";
 
 const socialLinks = [
@@ -80,13 +81,12 @@ export const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
           {/* Brand */}
           <div className="col-span-2">
-            <a href="#" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-neon-cyan to-neon-purple flex items-center justify-center">
-                <Zap className="w-5 h-5 text-primary-foreground" />
-              </div>
-              <span className="text-xl font-bold text-foreground">
-                Neuro<span className="text-neon-cyan">quant</span>
-              </span>
+          <a href="#" className="flex items-center gap-2 mb-4">
+              <img 
+                src={neuroquantLogo} 
+                alt="NeuroQuant Logo" 
+                className="h-10 w-auto object-contain"
+              />
             </a>
             <p className="text-muted-foreground text-sm max-w-xs mb-6">
               {t("footer.brand.tagline")}
