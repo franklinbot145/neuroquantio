@@ -11,7 +11,36 @@ serve(async (req) => {
   }
 
   try {
-    const { messages } = await req.json();
+    const bodyText = await req.text();
+    console.log("Received body length:", bodyText.length);
+
+    if (!bodyText || bodyText.length === 0) {
+      console.error("Empty request body received");
+      return new Response(JSON.stringify({ error: "Leerer Request-Body" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    let messages;
+    try {
+      const parsed = JSON.parse(bodyText);
+      messages = parsed.messages;
+    } catch (parseError) {
+      console.error("JSON parse error:", parseError);
+      return new Response(JSON.stringify({ error: "Ungültiges JSON-Format" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    if (!Array.isArray(messages) || messages.length === 0) {
+      console.error("No messages array received:", messages);
+      return new Response(JSON.stringify({ error: "Keine Nachrichten empfangen" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     
     if (!LOVABLE_API_KEY) {
