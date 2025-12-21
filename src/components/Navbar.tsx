@@ -52,7 +52,7 @@ export const Navbar = () => {
             <img 
               src={neuroquantLogo} 
               alt="Neuroquant Logo" 
-              className="h-12 w-auto object-contain"
+              className="h-12 w-auto object-contain logo-glow"
             />
           </motion.a>
 

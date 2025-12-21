@@ -142,6 +142,19 @@
   .gradient-text {
     @apply bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent;
   }
+
+  .logo-glow {
+    filter: drop-shadow(0 0 8px hsl(185 100% 50% / 0.6)) 
+            drop-shadow(0 0 20px hsl(185 100% 50% / 0.4))
+            drop-shadow(0 0 40px hsl(270 100% 60% / 0.3));
+    transition: filter 0.3s ease;
+  }
+
+  .logo-glow:hover {
+    filter: drop-shadow(0 0 12px hsl(185 100% 50% / 0.8)) 
+            drop-shadow(0 0 30px hsl(185 100% 50% / 0.6))
+            drop-shadow(0 0 60px hsl(270 100% 60% / 0.5));
+  }
 }
 
 @layer utilities {

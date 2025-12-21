@@ -131,7 +131,7 @@ export default function Auth() {
           <img 
             src={neuroquantLogo} 
             alt="NeuroQuant Logo" 
-            className="h-14 w-auto object-contain"
+            className="h-14 w-auto object-contain logo-glow"
           />
         </a>
 

@@ -85,7 +85,7 @@ export const Footer = () => {
               <img 
                 src={neuroquantLogo} 
                 alt="NeuroQuant Logo" 
-                className="h-10 w-auto object-contain"
+                className="h-10 w-auto object-contain logo-glow"
               />
             </a>
             <p className="text-muted-foreground text-sm max-w-xs mb-6">
