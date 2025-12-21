@@ -33,18 +33,29 @@ export const ChatWidget = () => {
   const streamChat = async (allMessages: Message[]) => {
     const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
     
+    const requestBody = JSON.stringify({ messages: allMessages });
+    console.log("Sending to chat function:", requestBody);
+    
     const resp = await fetch(CHAT_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
       },
-      body: JSON.stringify({ messages: allMessages }),
+      body: requestBody,
     });
 
+    console.log("Response status:", resp.status);
+
     if (!resp.ok) {
-      const errorData = await resp.json().catch(() => ({}));
-      throw new Error(errorData.error || "Fehler beim Senden der Nachricht");
+      const errorText = await resp.text();
+      console.error("Chat error response:", errorText);
+      try {
+        const errorData = JSON.parse(errorText);
+        throw new Error(errorData.error || "Fehler beim Senden der Nachricht");
+      } catch {
+        throw new Error("Fehler beim Senden der Nachricht");
+      }
     }
 
     if (!resp.body) throw new Error("No response body");
