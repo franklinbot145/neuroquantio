@@ -17,24 +17,24 @@ export const Footer = () => {
   const { t } = useTranslation();
   const [dialogOpen, setDialogOpen] = useState(false);
 
-  const footerLinks = {
+const footerLinks = {
     solutions: [
-      { name: t("footer.links.aiInfrastructure"), href: "#" },
-      { name: t("footer.links.voiceAI"), href: "#" },
-      { name: t("footer.links.chatbots"), href: "#" },
-      { name: t("footer.links.contentEngine"), href: "#" },
+      { name: t("footer.links.aiInfrastructure"), href: "/loesungen/ki-infrastruktur" },
+      { name: t("footer.links.voiceAI"), href: "/loesungen/sprach-ki" },
+      { name: t("footer.links.chatbots"), href: "/loesungen/ki-chatbots" },
+      { name: t("footer.links.contentEngine"), href: "/loesungen/content-engine" },
     ],
     company: [
-      { name: t("footer.links.aboutUs"), href: "#" },
-      { name: t("footer.links.careers"), href: "#" },
-      { name: t("footer.links.blog"), href: "#" },
-      { name: t("footer.links.contact"), href: "#" },
+      { name: t("footer.links.aboutUs"), href: "/ueber-uns" },
+      { name: t("footer.links.careers"), href: "/karriere" },
+      { name: t("footer.links.blog"), href: "/blog" },
+      { name: t("footer.links.contact"), href: "/kontakt" },
     ],
     resources: [
-      { name: t("footer.links.documentation"), href: "#" },
-      { name: t("footer.links.apiReference"), href: "#" },
-      { name: t("footer.links.caseStudies"), href: "#" },
-      { name: t("footer.links.support"), href: "#" },
+      { name: t("footer.links.documentation"), href: "/dokumentation" },
+      { name: t("footer.links.apiReference"), href: "/api-referenz" },
+      { name: t("footer.links.caseStudies"), href: "/fallstudien" },
+      { name: t("footer.links.support"), href: "/support" },
     ],
   };
 
@@ -111,9 +111,9 @@ export const Footer = () => {
             <ul className="space-y-2">
               {footerLinks.solutions.map((link) => (
                 <li key={link.name}>
-                  <a href={link.href} className="text-sm text-muted-foreground hover:text-neon-cyan transition-colors">
+                  <Link to={link.href} className="text-sm text-muted-foreground hover:text-neon-cyan transition-colors">
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -124,9 +124,9 @@ export const Footer = () => {
             <ul className="space-y-2">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <a href={link.href} className="text-sm text-muted-foreground hover:text-neon-cyan transition-colors">
+                  <Link to={link.href} className="text-sm text-muted-foreground hover:text-neon-cyan transition-colors">
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -137,9 +137,9 @@ export const Footer = () => {
             <ul className="space-y-2">
               {footerLinks.resources.map((link) => (
                 <li key={link.name}>
-                  <a href={link.href} className="text-sm text-muted-foreground hover:text-neon-cyan transition-colors">
+                  <Link to={link.href} className="text-sm text-muted-foreground hover:text-neon-cyan transition-colors">
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
