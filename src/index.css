@@ -144,6 +144,7 @@
   }
 
   .logo-glow {
+    mix-blend-mode: multiply;
     filter: drop-shadow(0 0 8px hsl(185 100% 50% / 0.6)) 
             drop-shadow(0 0 20px hsl(185 100% 50% / 0.4))
             drop-shadow(0 0 40px hsl(270 100% 60% / 0.3));
