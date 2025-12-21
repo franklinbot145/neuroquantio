@@ -19,6 +19,14 @@ import KiInfrastruktur from "./pages/solutions/KiInfrastruktur";
 import SprachKi from "./pages/solutions/SprachKi";
 import ContentEngine from "./pages/solutions/ContentEngine";
 import PerformanceAds from "./pages/solutions/PerformanceAds";
+import UeberUns from "./pages/UeberUns";
+import Karriere from "./pages/Karriere";
+import Blog from "./pages/Blog";
+import Kontakt from "./pages/Kontakt";
+import Dokumentation from "./pages/Dokumentation";
+import ApiReferenz from "./pages/ApiReferenz";
+import Fallstudien from "./pages/Fallstudien";
+import Support from "./pages/Support";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +52,14 @@ const App = () => (
             <Route path="/loesungen/sprach-ki" element={<SprachKi />} />
             <Route path="/loesungen/content-engine" element={<ContentEngine />} />
             <Route path="/loesungen/performance-ads" element={<PerformanceAds />} />
+            <Route path="/ueber-uns" element={<UeberUns />} />
+            <Route path="/karriere" element={<Karriere />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/kontakt" element={<Kontakt />} />
+            <Route path="/dokumentation" element={<Dokumentation />} />
+            <Route path="/api-referenz" element={<ApiReferenz />} />
+            <Route path="/fallstudien" element={<Fallstudien />} />
+            <Route path="/support" element={<Support />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
