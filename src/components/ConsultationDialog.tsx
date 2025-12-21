@@ -51,7 +51,7 @@ export const ConsultationDialog = ({
   
   // Build Calendly URL with design parameters and UTM tracking
   const buildCalendlyUrl = () => {
-    const baseUrl = "https://calendly.com/neuroquant/beratung";
+    const baseUrl = "https://calendly.com/neuroquant-info/30min";
     const params = new URLSearchParams({
       hide_gdpr_banner: "1",
       background_color: "0a0a0a",
