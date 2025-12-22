@@ -36,52 +36,47 @@ const Impressum = () => {
             {isGerman ? (
               <>
                 <section>
-                  <h2 className="text-2xl font-semibold text-foreground mb-4">Angaben gemäß § 5 TMG</h2>
+                  <h2 className="text-2xl font-semibold text-foreground mb-4">Firmeninformationen</h2>
                   <p className="text-muted-foreground">
-                    Neuroquant GmbH<br />
-                    [IHRE STRASSE UND HAUSNUMMER]<br />
-                    [IHRE PLZ UND STADT]<br />
-                    Deutschland
+                    NEUROQUANT LLC<br />
+                    1209 Mountain Road PL NE STE N<br />
+                    Albuquerque, NM 87110<br />
+                    United States
+                  </p>
+                </section>
+
+                <section>
+                  <h2 className="text-2xl font-semibold text-foreground mb-4">Geschäftsform</h2>
+                  <p className="text-muted-foreground">
+                    Limited Liability Company (LLC)<br />
+                    Registriert in New Mexico, USA
                   </p>
                 </section>
 
                 <section>
                   <h2 className="text-2xl font-semibold text-foreground mb-4">Kontakt</h2>
                   <p className="text-muted-foreground">
-                    Telefon: [IHRE TELEFONNUMMER]<br />
                     E-Mail: info@neuroquant.io
                   </p>
                 </section>
 
                 <section>
-                  <h2 className="text-2xl font-semibold text-foreground mb-4">Vertretungsberechtigte Person</h2>
+                  <h2 className="text-2xl font-semibold text-foreground mb-4">EU-Datenschutz (DSGVO)</h2>
                   <p className="text-muted-foreground">
-                    Geschäftsführer: [NAME DES GESCHÄFTSFÜHRERS]
+                    Obwohl NEUROQUANT LLC ein US-amerikanisches Unternehmen ist, verpflichten wir uns zur Einhaltung der Europäischen Datenschutz-Grundverordnung (DSGVO) für alle Nutzer aus der Europäischen Union. Wir verarbeiten personenbezogene Daten nur auf Grundlage rechtmäßiger Zwecke und gewährleisten die Rechte der betroffenen Personen gemäß DSGVO, einschließlich:
                   </p>
-                </section>
-
-                <section>
-                  <h2 className="text-2xl font-semibold text-foreground mb-4">Registereintrag</h2>
-                  <p className="text-muted-foreground">
-                    Eintragung im Handelsregister<br />
-                    Registergericht: [AMTSGERICHT]<br />
-                    Registernummer: HRB [NUMMER]
-                  </p>
-                </section>
-
-                <section>
-                  <h2 className="text-2xl font-semibold text-foreground mb-4">Umsatzsteuer-ID</h2>
-                  <p className="text-muted-foreground">
-                    Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br />
-                    DE [IHRE UST-IDNR]
-                  </p>
-                </section>
-
-                <section>
-                  <h2 className="text-2xl font-semibold text-foreground mb-4">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
-                  <p className="text-muted-foreground">
-                    [NAME DES VERANTWORTLICHEN]<br />
-                    [ADRESSE]
+                  <ul className="text-muted-foreground mt-4 space-y-2">
+                    <li>• Recht auf Auskunft (Art. 15 DSGVO)</li>
+                    <li>• Recht auf Berichtigung (Art. 16 DSGVO)</li>
+                    <li>• Recht auf Löschung (Art. 17 DSGVO)</li>
+                    <li>• Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</li>
+                    <li>• Widerspruchsrecht (Art. 21 DSGVO)</li>
+                  </ul>
+                  <p className="text-muted-foreground mt-4">
+                    Für Datenschutzanfragen kontaktieren Sie uns bitte unter:{" "}
+                    <a href="mailto:info@neuroquant.io" className="text-neon-cyan hover:underline">
+                      info@neuroquant.io
+                    </a>
                   </p>
                 </section>
 
@@ -98,7 +93,7 @@ const Impressum = () => {
                 </section>
 
                 <section>
-                  <h2 className="text-2xl font-semibold text-foreground mb-4">Verbraucherstreitbeilegung/Universalschlichtungsstelle</h2>
+                  <h2 className="text-2xl font-semibold text-foreground mb-4">Verbraucherstreitbeilegung</h2>
                   <p className="text-muted-foreground">
                     Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
                   </p>
@@ -107,7 +102,7 @@ const Impressum = () => {
                 <section>
                   <h2 className="text-2xl font-semibold text-foreground mb-4">Haftung für Inhalte</h2>
                   <p className="text-muted-foreground">
-                    Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+                    Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
                     <br /><br />
                     Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
                   </p>
@@ -116,70 +111,65 @@ const Impressum = () => {
                 <section>
                   <h2 className="text-2xl font-semibold text-foreground mb-4">Haftung für Links</h2>
                   <p className="text-muted-foreground">
-                    Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.
+                    Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
                     <br /><br />
-                    Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.
+                    Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.
                   </p>
                 </section>
 
                 <section>
                   <h2 className="text-2xl font-semibold text-foreground mb-4">Urheberrecht</h2>
                   <p className="text-muted-foreground">
-                    Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.
+                    Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
                     <br /><br />
-                    Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
+                    Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
                   </p>
                 </section>
               </>
             ) : (
               <>
                 <section>
-                  <h2 className="text-2xl font-semibold text-foreground mb-4">Information according to § 5 TMG</h2>
+                  <h2 className="text-2xl font-semibold text-foreground mb-4">Company Information</h2>
                   <p className="text-muted-foreground">
-                    Neuroquant GmbH<br />
-                    [YOUR STREET AND NUMBER]<br />
-                    [YOUR POSTAL CODE AND CITY]<br />
-                    Germany
+                    NEUROQUANT LLC<br />
+                    1209 Mountain Road PL NE STE N<br />
+                    Albuquerque, NM 87110<br />
+                    United States
+                  </p>
+                </section>
+
+                <section>
+                  <h2 className="text-2xl font-semibold text-foreground mb-4">Business Structure</h2>
+                  <p className="text-muted-foreground">
+                    Limited Liability Company (LLC)<br />
+                    Registered in New Mexico, USA
                   </p>
                 </section>
 
                 <section>
                   <h2 className="text-2xl font-semibold text-foreground mb-4">Contact</h2>
                   <p className="text-muted-foreground">
-                    Phone: [YOUR PHONE NUMBER]<br />
                     Email: info@neuroquant.io
                   </p>
                 </section>
 
                 <section>
-                  <h2 className="text-2xl font-semibold text-foreground mb-4">Authorized Representative</h2>
+                  <h2 className="text-2xl font-semibold text-foreground mb-4">EU Data Protection (GDPR)</h2>
                   <p className="text-muted-foreground">
-                    Managing Director: [NAME OF MANAGING DIRECTOR]
+                    Although NEUROQUANT LLC is a US-based company, we are committed to compliance with the European General Data Protection Regulation (GDPR) for all users from the European Union. We process personal data only for legitimate purposes and ensure the rights of data subjects under GDPR, including:
                   </p>
-                </section>
-
-                <section>
-                  <h2 className="text-2xl font-semibold text-foreground mb-4">Commercial Register Entry</h2>
-                  <p className="text-muted-foreground">
-                    Entry in the Commercial Register<br />
-                    Registry Court: [LOCAL COURT]<br />
-                    Registration Number: HRB [NUMBER]
-                  </p>
-                </section>
-
-                <section>
-                  <h2 className="text-2xl font-semibold text-foreground mb-4">VAT ID</h2>
-                  <p className="text-muted-foreground">
-                    VAT identification number according to § 27 a of the German VAT Act:<br />
-                    DE [YOUR VAT ID]
-                  </p>
-                </section>
-
-                <section>
-                  <h2 className="text-2xl font-semibold text-foreground mb-4">Responsible for Content</h2>
-                  <p className="text-muted-foreground">
-                    [NAME OF RESPONSIBLE PERSON]<br />
-                    [ADDRESS]
+                  <ul className="text-muted-foreground mt-4 space-y-2">
+                    <li>• Right to access (Art. 15 GDPR)</li>
+                    <li>• Right to rectification (Art. 16 GDPR)</li>
+                    <li>• Right to erasure (Art. 17 GDPR)</li>
+                    <li>• Right to data portability (Art. 20 GDPR)</li>
+                    <li>• Right to object (Art. 21 GDPR)</li>
+                  </ul>
+                  <p className="text-muted-foreground mt-4">
+                    For data protection inquiries, please contact us at:{" "}
+                    <a href="mailto:info@neuroquant.io" className="text-neon-cyan hover:underline">
+                      info@neuroquant.io
+                    </a>
                   </p>
                 </section>
 
@@ -205,7 +195,7 @@ const Impressum = () => {
                 <section>
                   <h2 className="text-2xl font-semibold text-foreground mb-4">Liability for Content</h2>
                   <p className="text-muted-foreground">
-                    As a service provider, we are responsible for our own content on these pages in accordance with general laws pursuant to § 7 Para.1 TMG. According to §§ 8 to 10 TMG, however, we are not obligated as a service provider to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity.
+                    The contents of our pages have been created with the utmost care. However, we cannot guarantee the accuracy, completeness, or timeliness of the content. As a service provider, we are responsible for our own content on these pages in accordance with general laws.
                     <br /><br />
                     Obligations to remove or block the use of information under general laws remain unaffected. However, liability in this regard is only possible from the point in time at which a concrete legal violation becomes known. If we become aware of any such legal violations, we will remove this content immediately.
                   </p>
@@ -214,18 +204,18 @@ const Impressum = () => {
                 <section>
                   <h2 className="text-2xl font-semibold text-foreground mb-4">Liability for Links</h2>
                   <p className="text-muted-foreground">
-                    Our offer contains links to external third-party websites over whose content we have no influence. Therefore, we cannot assume any liability for this external content. The respective provider or operator of the pages is always responsible for the content of the linked pages. The linked pages were checked for possible legal violations at the time of linking. Illegal content was not recognizable at the time of linking.
+                    Our offer contains links to external third-party websites over whose content we have no influence. Therefore, we cannot assume any liability for this external content. The respective provider or operator of the pages is always responsible for the content of the linked pages.
                     <br /><br />
-                    However, permanent monitoring of the content of the linked pages is not reasonable without concrete evidence of a legal violation. If we become aware of any legal violations, we will remove such links immediately.
+                    The linked pages were checked for possible legal violations at the time of linking. Illegal content was not recognizable at the time of linking. However, permanent monitoring of the content of the linked pages is not reasonable without concrete evidence of a legal violation. If we become aware of any legal violations, we will remove such links immediately.
                   </p>
                 </section>
 
                 <section>
                   <h2 className="text-2xl font-semibold text-foreground mb-4">Copyright</h2>
                   <p className="text-muted-foreground">
-                    The content and works created by the site operators on these pages are subject to German copyright law. Duplication, processing, distribution, and any kind of exploitation outside the limits of copyright require the written consent of the respective author or creator. Downloads and copies of this site are only permitted for private, non-commercial use.
+                    The content and works created by the site operators on these pages are subject to copyright law. Duplication, processing, distribution, and any kind of exploitation outside the limits of copyright require the written consent of the respective author or creator.
                     <br /><br />
-                    Insofar as the content on this site was not created by the operator, the copyrights of third parties are respected. In particular, third-party content is marked as such. Should you nevertheless become aware of a copyright infringement, please inform us accordingly. If we become aware of any infringements, we will remove such content immediately.
+                    Downloads and copies of this site are only permitted for private, non-commercial use. Insofar as the content on this site was not created by the operator, the copyrights of third parties are respected. Should you nevertheless become aware of a copyright infringement, please inform us accordingly. If we become aware of any infringements, we will remove such content immediately.
                   </p>
                 </section>
               </>
