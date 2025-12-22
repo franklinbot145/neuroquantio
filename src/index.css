@@ -144,7 +144,8 @@
   }
 
   .logo-glow {
-    mix-blend-mode: multiply;
+    filter: drop-shadow(0 0 8px hsl(var(--neon-cyan) / 0.4)) 
+            drop-shadow(0 0 16px hsl(var(--neon-purple) / 0.3));
   }
 }
 
