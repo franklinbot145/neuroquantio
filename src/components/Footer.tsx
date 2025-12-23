@@ -4,7 +4,10 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Twitter, Linkedin, Github, Mail, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import neuroquantLogo from "@/assets/neuroquant-logo.png";
+import { Image } from "@/components/Image";
+import neuroquantLogoPng from "@/assets/optimized/neuroquant-logo.png";
+import neuroquantLogoWebp from "@/assets/optimized/neuroquant-logo.webp";
+import neuroquantLogoAvif from "@/assets/optimized/neuroquant-logo.avif";
 import { ConsultationDialog } from "@/components/ConsultationDialog";
 
 const socialLinks = [
@@ -81,13 +84,20 @@ const footerLinks = {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
           {/* Brand */}
           <div className="col-span-2">
-          <a href="#" className="flex items-center gap-2 mb-4">
-              <img 
-                src={neuroquantLogo} 
+            <Link to="/" className="flex items-center gap-2 mb-4">
+              <Image 
+                src={neuroquantLogoPng}
+                sources={[
+                  { srcSet: neuroquantLogoAvif, type: 'image/avif' },
+                  { srcSet: neuroquantLogoWebp, type: 'image/webp' },
+                ]}
+                width={361}
+                height={240}
                 alt="NeuroQuant Logo" 
-                className="h-10 w-auto object-contain logo-glow"
+                className="h-16 w-auto object-contain"
+                sizes="96px"
               />
-            </a>
+            </Link>
             <p className="text-muted-foreground text-sm max-w-xs mb-6">
               {t("footer.brand.tagline")}
             </p>

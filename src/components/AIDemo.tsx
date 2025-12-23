@@ -2,8 +2,13 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Phone, Mic, Activity, Bot, User, Send } from "lucide-react";
-import voiceWave from "@/assets/voice-wave.png";
-import chatInterface from "@/assets/chat-interface.png";
+import { Image } from "@/components/Image";
+import voiceWavePng from "@/assets/optimized/voice-wave.png";
+import voiceWaveWebp from "@/assets/optimized/voice-wave.webp";
+import voiceWaveAvif from "@/assets/optimized/voice-wave.avif";
+import chatInterfacePng from "@/assets/optimized/chat-interface.png";
+import chatInterfaceWebp from "@/assets/optimized/chat-interface.webp";
+import chatInterfaceAvif from "@/assets/optimized/chat-interface.avif";
 
 const ChatInterface = () => {
   const { t } = useTranslation();
@@ -136,10 +141,17 @@ export const AIDemo = () => {
             <div className="p-8">
               {/* Voice visualization image */}
               <div className="relative mb-6 rounded-xl overflow-hidden">
-                <img 
-                  src={voiceWave} 
+                <Image 
+                  src={voiceWavePng}
+                  sources={[
+                    { srcSet: voiceWaveAvif, type: 'image/avif' },
+                    { srcSet: voiceWaveWebp, type: 'image/webp' },
+                  ]}
+                  width={640}
+                  height={512}
                   alt="Voice AI Waveform" 
                   className="w-full h-40 object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
               </div>
@@ -182,10 +194,17 @@ export const AIDemo = () => {
           >
             {/* Background image overlay */}
             <div className="absolute inset-0 opacity-10">
-              <img 
-                src={chatInterface} 
+              <Image 
+                src={chatInterfacePng}
+                sources={[
+                  { srcSet: chatInterfaceAvif, type: 'image/avif' },
+                  { srcSet: chatInterfaceWebp, type: 'image/webp' },
+                ]}
+                width={640}
+                height={512}
                 alt="Chat Interface" 
                 className="w-full h-full object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
             <div className="relative z-10 h-full">

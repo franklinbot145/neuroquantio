@@ -3,7 +3,10 @@ import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
-import heroChip from "@/assets/hero-chip.png";
+import { Image } from "@/components/Image";
+import heroChipPng from "@/assets/optimized/hero-chip.png";
+import heroChipWebp from "@/assets/optimized/hero-chip.webp";
+import heroChipAvif from "@/assets/optimized/hero-chip.avif";
 import { ConsultationDialog } from "@/components/ConsultationDialog";
 
 export const Hero = () => {
@@ -12,12 +15,21 @@ export const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden noise-bg">
-      {/* Background image */}
+      {/* Background image - LCP element with priority for fast loading */}
       <div className="absolute inset-0">
-        <img 
-          src={heroChip} 
+        <Image 
+          src={heroChipPng}
+          sources={[
+            { srcSet: heroChipAvif, type: 'image/avif' },
+            { srcSet: heroChipWebp, type: 'image/webp' },
+          ]}
+          width={1920}
+          height={1088}
           alt="AI Neural Network Chip" 
           className="w-full h-full object-cover opacity-60"
+          sizes="100vw"
+          priority
+          fill
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
       </div>

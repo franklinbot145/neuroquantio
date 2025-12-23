@@ -2,17 +2,18 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import neuroquantLogo from "@/assets/neuroquant-logo.png";
-import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { Image } from "@/components/Image";
+import neuroquantLogoPng from "@/assets/optimized/neuroquant-logo.png";
+import neuroquantLogoWebp from "@/assets/optimized/neuroquant-logo.webp";
+import neuroquantLogoAvif from "@/assets/optimized/neuroquant-logo.avif";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
-import { useAuth } from "@/contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
+
+const MotionLink = motion.create(Link);
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { user } = useAuth();
-  const navigate = useNavigate();
   const { t } = useTranslation();
 
   const navLinks = [
@@ -42,21 +43,29 @@ export const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <motion.a
-            href="#"
+        <div className="flex items-center justify-between h-24">
+          {/* Logo - Links to homepage */}
+          <MotionLink
+            to="/"
             className="flex items-center group"
             whileHover={{ scale: 1.05 }}
           >
-            <img 
-              src={neuroquantLogo} 
+            <Image 
+              src={neuroquantLogoPng}
+              sources={[
+                { srcSet: neuroquantLogoAvif, type: 'image/avif' },
+                { srcSet: neuroquantLogoWebp, type: 'image/webp' },
+              ]}
+              width={361}
+              height={240}
               alt="Neuroquant Logo" 
-              className="h-12 w-auto object-contain logo-glow"
+              className="h-[70px] w-auto object-contain"
+              sizes="105px"
+              priority
             />
-          </motion.a>
+          </MotionLink>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - Centered */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link, index) => (
               <motion.a
@@ -73,23 +82,9 @@ export const Navbar = () => {
             ))}
           </div>
 
-          {/* Right side */}
-          <div className="hidden md:flex items-center gap-4">
+          {/* Right side - Language Switcher only */}
+          <div className="hidden md:flex items-center">
             <LanguageSwitcher />
-            {user ? (
-              <Button variant="neon" onClick={() => navigate("/dashboard")}>
-                {t("nav.dashboard")}
-              </Button>
-            ) : (
-              <>
-                <Button variant="ghost" onClick={() => navigate("/auth")}>
-                  {t("nav.signIn")}
-                </Button>
-                <Button variant="neon" onClick={() => navigate("/auth")}>
-                  {t("nav.getStarted")}
-                </Button>
-              </>
-            )}
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -125,15 +120,6 @@ export const Navbar = () => {
               <div className="py-2">
                 <LanguageSwitcher />
               </div>
-              {user ? (
-                <Button variant="neon" className="mt-4" onClick={() => navigate("/dashboard")}>
-                  {t("nav.dashboard")}
-                </Button>
-              ) : (
-                <Button variant="neon" className="mt-4" onClick={() => navigate("/auth")}>
-                  {t("nav.getStarted")}
-                </Button>
-              )}
             </div>
           </motion.div>
         )}

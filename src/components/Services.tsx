@@ -10,7 +10,10 @@ import {
   BarChart3,
   ArrowUpRight
 } from "lucide-react";
-import aiBrain from "@/assets/ai-brain.png";
+import { Image } from "@/components/Image";
+import aiBrainPng from "@/assets/optimized/ai-brain.png";
+import aiBrainWebp from "@/assets/optimized/ai-brain.webp";
+import aiBrainAvif from "@/assets/optimized/ai-brain.avif";
 
 const MotionLink = motion.create(Link);
 
@@ -102,7 +105,18 @@ export const Services = () => {
         animate={{ y: [-20, 20, -20] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       >
-        <img src={aiBrain} alt="AI Brain" className="w-full h-full object-contain" />
+        <Image 
+          src={aiBrainPng}
+          sources={[
+            { srcSet: aiBrainAvif, type: 'image/avif' },
+            { srcSet: aiBrainWebp, type: 'image/webp' },
+          ]}
+          width={640}
+          height={640}
+          alt="AI Brain" 
+          className="w-full h-full object-contain"
+          sizes="500px"
+        />
       </motion.div>
       
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
