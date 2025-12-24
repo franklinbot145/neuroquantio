@@ -258,5 +258,33 @@ export const de = {
       alreadyAdded: "Dienst bereits vorhanden",
       alreadyAddedDesc: "Sie haben diesen Dienst bereits in Ihrem Dashboard.",
     },
+    
+    // Website Checker
+    websiteChecker: {
+      badge: "Website-Checker",
+      title: "Wie gut ist Ihre aktuelle Website?",
+      inputPlaceholder: "https://www.ihre-website.de",
+      button: "Website prüfen",
+      loading: "Analyse läuft...",
+      result: {
+        title: "Verbesserungspotenzial erkannt",
+        subtitle: "Einige wichtige Bereiche können optimiert werden, um mehr Anfragen zu generieren.",
+      },
+      categories: {
+        mobile: "Mobile Optimierung",
+        speed: "Ladezeit",
+        seo: "SEO Grundlagen",
+        design: "Modernes Design",
+        ssl: "Sicherheit (SSL)",
+      },
+      status: {
+        warning: "Optimierbar",
+        success: "Sehr gut",
+      },
+      cta: {
+        button: "Jetzt optimieren lassen",
+        subtitle: "Kostenlose Erstberatung – Ergebnis innerhalb von 24 Stunden",
+      },
+    },
   },
 };
