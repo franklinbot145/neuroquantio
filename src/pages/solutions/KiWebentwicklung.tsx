@@ -16,6 +16,8 @@ import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ConsultationDialog } from "@/components/ConsultationDialog";
+import { AllInclusive } from "@/components/AllInclusive";
+import { WebsiteCheckerSection } from "@/components/WebsiteCheckerSection";
 import {
   Accordion,
   AccordionContent,
@@ -302,6 +304,9 @@ export default function KiWebentwicklung() {
         </div>
       </section>
 
+      {/* All Inclusive Section */}
+      <AllInclusive />
+
       {/* Process Section */}
       <section className="py-20 relative">
         <div className="container mx-auto px-4 lg:px-8">
@@ -393,6 +398,9 @@ export default function KiWebentwicklung() {
           </div>
         </div>
       </section>
+
+      {/* Website Checker Section */}
+      <WebsiteCheckerSection />
 
       {/* FAQ Section */}
       <section className="py-20 relative">
