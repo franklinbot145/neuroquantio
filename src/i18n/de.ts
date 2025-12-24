@@ -28,6 +28,39 @@ export const de = {
       },
     },
     
+    // All Inclusive
+    allInclusive: {
+      title: "Alles",
+      titleHighlight: "Inklusive",
+      subtitle: "Jedes Projekt kommt mit allem, was Sie für Ihren digitalen Erfolg brauchen.",
+      items: {
+        seo: {
+          title: "SEO-Optimierung",
+          description: "Maximale Sichtbarkeit in Suchmaschinen. Wir optimieren Ihre Website für Top-Rankings und mehr organischen Traffic.",
+        },
+        hosting: {
+          title: "High-Speed Hosting",
+          description: "Blitzschnelle Ladezeiten auf deutschen Servern. Ihre Website lädt in unter 1 Sekunde für beste Nutzererfahrung.",
+        },
+        gdpr: {
+          title: "DSGVO-Konformität",
+          description: "Vollständiger Datenschutz nach EU-Recht. Rechtssichere Cookie-Banner, Impressum und Datenschutzerklärung inklusive.",
+        },
+        responsive: {
+          title: "Responsive Design",
+          description: "Perfekte Darstellung auf allen Geräten. Von Smartphone bis Desktop – Ihre Website sieht immer professionell aus.",
+        },
+        ai: {
+          title: "KI-Integration",
+          description: "Smarte Automatisierung für Ihren Workflow. Chatbots, Content-Generierung und intelligente Analysen auf Knopfdruck.",
+        },
+        support: {
+          title: "24/7 Support",
+          description: "Persönliche Betreuung rund um die Uhr. Unser Team ist jederzeit für Sie da – per Chat, E-Mail oder Telefon.",
+        },
+      },
+    },
+    
     // Services
     services: {
       title: "Unsere",
