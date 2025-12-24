@@ -258,5 +258,33 @@ export const en = {
       alreadyAdded: "Service already added",
       alreadyAddedDesc: "You already have this service in your dashboard.",
     },
+    
+    // Website Checker
+    websiteChecker: {
+      badge: "Website Checker",
+      title: "How good is your current website?",
+      inputPlaceholder: "https://www.your-website.com",
+      button: "Check Website",
+      loading: "Analyzing...",
+      result: {
+        title: "Improvement Potential Detected",
+        subtitle: "Some important areas can be optimized to generate more inquiries.",
+      },
+      categories: {
+        mobile: "Mobile Optimization",
+        speed: "Loading Speed",
+        seo: "SEO Basics",
+        design: "Modern Design",
+        ssl: "Security (SSL)",
+      },
+      status: {
+        warning: "Optimizable",
+        success: "Excellent",
+      },
+      cta: {
+        button: "Get it optimized now",
+        subtitle: "Free initial consultation – results within 24 hours",
+      },
+    },
   },
 };
