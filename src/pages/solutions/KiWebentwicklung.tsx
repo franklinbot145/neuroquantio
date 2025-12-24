@@ -307,6 +307,9 @@ export default function KiWebentwicklung() {
       {/* All Inclusive Section */}
       <AllInclusive />
 
+      {/* Website Checker Section */}
+      <WebsiteCheckerSection />
+
       {/* Process Section */}
       <section className="py-20 relative">
         <div className="container mx-auto px-4 lg:px-8">
@@ -398,9 +401,6 @@ export default function KiWebentwicklung() {
           </div>
         </div>
       </section>
-
-      {/* Website Checker Section */}
-      <WebsiteCheckerSection />
 
       {/* FAQ Section */}
       <section className="py-20 relative">
