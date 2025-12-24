@@ -28,6 +28,39 @@ export const en = {
       },
     },
     
+    // All Inclusive
+    allInclusive: {
+      title: "All",
+      titleHighlight: "Inclusive",
+      subtitle: "Every project comes with everything you need for your digital success.",
+      items: {
+        seo: {
+          title: "SEO Optimization",
+          description: "Maximum visibility in search engines. We optimize your website for top rankings and more organic traffic.",
+        },
+        hosting: {
+          title: "High-Speed Hosting",
+          description: "Lightning-fast loading times on German servers. Your website loads in under 1 second for the best user experience.",
+        },
+        gdpr: {
+          title: "GDPR Compliance",
+          description: "Complete data protection under EU law. Legally compliant cookie banners, imprint and privacy policy included.",
+        },
+        responsive: {
+          title: "Responsive Design",
+          description: "Perfect display on all devices. From smartphone to desktop – your website always looks professional.",
+        },
+        ai: {
+          title: "AI Integration",
+          description: "Smart automation for your workflow. Chatbots, content generation and intelligent analytics at the push of a button.",
+        },
+        support: {
+          title: "24/7 Support",
+          description: "Personal support around the clock. Our team is always there for you – via chat, email or phone.",
+        },
+      },
+    },
+    
     // Services
     services: {
       title: "Our",
