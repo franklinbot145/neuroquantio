@@ -17,7 +17,6 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ConsultationDialog } from "@/components/ConsultationDialog";
 import { AllInclusive } from "@/components/AllInclusive";
-import { WebsiteCheckerSection } from "@/components/WebsiteCheckerSection";
 import {
   Accordion,
   AccordionContent,
@@ -306,9 +305,6 @@ export default function KiWebentwicklung() {
 
       {/* All Inclusive Section */}
       <AllInclusive />
-
-      {/* Website Checker Section */}
-      <WebsiteCheckerSection />
 
       {/* Process Section */}
       <section className="py-20 relative">
