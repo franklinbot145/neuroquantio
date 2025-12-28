@@ -24,6 +24,7 @@ const KiInfrastruktur = lazy(() => import("./pages/solutions/KiInfrastruktur"));
 const SprachKi = lazy(() => import("./pages/solutions/SprachKi"));
 const ContentEngine = lazy(() => import("./pages/solutions/ContentEngine"));
 const PerformanceAds = lazy(() => import("./pages/solutions/PerformanceAds"));
+const KiLeadGeneration = lazy(() => import("./pages/solutions/KiLeadGeneration"));
 const UeberUns = lazy(() => import("./pages/UeberUns"));
 const Karriere = lazy(() => import("./pages/Karriere"));
 const Blog = lazy(() => import("./pages/Blog"));
@@ -68,6 +69,7 @@ const App = () => (
               <Route path="/loesungen/sprach-ki" element={<SprachKi />} />
               <Route path="/loesungen/content-engine" element={<ContentEngine />} />
               <Route path="/loesungen/performance-ads" element={<PerformanceAds />} />
+              <Route path="/loesungen/ki-lead-generation" element={<KiLeadGeneration />} />
               <Route path="/ueber-uns" element={<UeberUns />} />
               <Route path="/karriere" element={<Karriere />} />
               <Route path="/blog" element={<Blog />} />
