@@ -68,7 +68,7 @@ export const en = {
       subtitle: "Comprehensive AI services designed to transform every aspect of your business operations.",
       items: {
         webDev: {
-          title: "AI Web Development",
+          title: "Web Development",
           description: "Self-optimizing websites powered by neural networks.",
         },
         chatbots: {
@@ -88,8 +88,8 @@ export const en = {
           description: "AI-generated Reels and Shorts for viral growth.",
         },
         ads: {
-          title: "Performance Ads",
-          description: "Data-driven ad campaigns optimized by algorithms.",
+          title: "AI Lead Generation",
+          description: "Qualified leads in no time. Reactivation of old leads.",
         },
       },
     },

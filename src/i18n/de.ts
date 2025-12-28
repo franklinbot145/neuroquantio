@@ -68,7 +68,7 @@ export const de = {
       subtitle: "Umfassende KI-Dienstleistungen, die jeden Aspekt Ihrer Geschäftsabläufe transformieren.",
       items: {
         webDev: {
-          title: "KI-Webentwicklung",
+          title: "Webentwicklung",
           description: "Selbstoptimierende Websites mit neuronalen Netzwerken.",
         },
         chatbots: {
@@ -88,8 +88,8 @@ export const de = {
           description: "KI-generierte Reels und Shorts für virales Wachstum.",
         },
         ads: {
-          title: "Performance-Werbung",
-          description: "Datengesteuerte Werbekampagnen, optimiert durch Algorithmen.",
+          title: "KI-Lead-Generation",
+          description: "Qualifizierte Leads in kürzester Zeit. Reaktivierung alter Leads.",
         },
       },
     },
