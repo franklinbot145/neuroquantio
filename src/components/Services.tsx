@@ -7,7 +7,7 @@ import {
   Server, 
   Phone, 
   Video, 
-  BarChart3,
+  Target,
   ArrowUpRight
 } from "lucide-react";
 import { Image } from "@/components/Image";
@@ -85,12 +85,12 @@ export const Services = () => {
       link: "/loesungen/content-engine",
     },
     {
-      icon: BarChart3,
+      icon: Target,
       titleKey: "services.items.ads.title",
       descKey: "services.items.ads.description",
       color: "from-neon-blue to-neon-cyan",
       span: "md:col-span-1",
-      link: "/loesungen/performance-ads",
+      link: "/loesungen/ki-lead-generation",
     },
   ];
 
