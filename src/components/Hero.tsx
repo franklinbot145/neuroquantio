@@ -14,7 +14,7 @@ export const Hero = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden noise-bg">
+    <section className="relative min-h-screen flex items-center justify-center pt-28 md:pt-20 overflow-hidden noise-bg">
       {/* Background image - LCP element with priority for fast loading */}
       <div className="absolute inset-0">
         <Image 

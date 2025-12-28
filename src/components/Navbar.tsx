@@ -43,7 +43,7 @@ export const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex items-center justify-between h-24">
+        <div className="flex items-center justify-between h-28 md:h-24">
           {/* Logo - Links to homepage */}
           <MotionLink
             to="/"
