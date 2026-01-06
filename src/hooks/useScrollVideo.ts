@@ -1,0 +1,115 @@
+import { useRef, useEffect, useState, useCallback } from "react";
+
+interface UseScrollVideoOptions {
+  containerRef: React.RefObject<HTMLElement>;
+  videoRef: React.RefObject<HTMLVideoElement>;
+  scrollHeight?: number; // How much virtual scroll space (in vh units)
+}
+
+interface UseScrollVideoReturn {
+  progress: number; // 0-1 representing video progress
+  isVideoReady: boolean;
+  isComplete: boolean; // Video has reached the end
+}
+
+export const useScrollVideo = ({
+  containerRef,
+  videoRef,
+  scrollHeight = 200,
+}: UseScrollVideoOptions): UseScrollVideoReturn => {
+  const [progress, setProgress] = useState(0);
+  const [isVideoReady, setIsVideoReady] = useState(false);
+  const [isComplete, setIsComplete] = useState(false);
+  const lastScrollY = useRef(0);
+  const ticking = useRef(false);
+
+  // Handle video metadata loaded
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleLoadedMetadata = () => {
+      setIsVideoReady(true);
+      video.currentTime = 0;
+    };
+
+    const handleCanPlay = () => {
+      setIsVideoReady(true);
+    };
+
+    video.addEventListener("loadedmetadata", handleLoadedMetadata);
+    video.addEventListener("canplay", handleCanPlay);
+
+    // Check if already loaded
+    if (video.readyState >= 1) {
+      setIsVideoReady(true);
+    }
+
+    return () => {
+      video.removeEventListener("loadedmetadata", handleLoadedMetadata);
+      video.removeEventListener("canplay", handleCanPlay);
+    };
+  }, [videoRef]);
+
+  // Scroll handler
+  const updateVideoTime = useCallback(() => {
+    const container = containerRef.current;
+    const video = videoRef.current;
+
+    if (!container || !video || !isVideoReady) {
+      ticking.current = false;
+      return;
+    }
+
+    const rect = container.getBoundingClientRect();
+    const containerTop = rect.top;
+    const containerHeight = container.offsetHeight;
+    const viewportHeight = window.innerHeight;
+
+    // Calculate scroll progress within the container
+    // Progress goes from 0 (container just entered view) to 1 (scrolled through container)
+    const scrollableDistance = containerHeight - viewportHeight;
+    const scrolled = -containerTop;
+    const rawProgress = Math.max(0, Math.min(1, scrolled / scrollableDistance));
+
+    setProgress(rawProgress);
+    setIsComplete(rawProgress >= 0.99);
+
+    // Update video currentTime based on scroll progress
+    if (video.duration && !isNaN(video.duration)) {
+      const targetTime = rawProgress * video.duration;
+      // Only update if significant change to prevent jittering
+      if (Math.abs(video.currentTime - targetTime) > 0.05) {
+        video.currentTime = targetTime;
+      }
+    }
+
+    ticking.current = false;
+  }, [containerRef, videoRef, isVideoReady]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      lastScrollY.current = window.scrollY;
+
+      if (!ticking.current) {
+        requestAnimationFrame(updateVideoTime);
+        ticking.current = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    
+    // Initial call
+    updateVideoTime();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [updateVideoTime]);
+
+  return {
+    progress,
+    isVideoReady,
+    isComplete,
+  };
+};
