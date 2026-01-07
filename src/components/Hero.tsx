@@ -38,8 +38,11 @@ export const Hero = () => {
             src="/videos/hero-chip-explosion.mp4"
             muted
             playsInline
-            preload="auto"
-            className="w-full h-full object-cover opacity-60"
+            // @ts-ignore - für ältere iOS-Versionen
+            webkit-playsinline=""
+            preload="metadata"
+            poster="/assets/optimized/hero-chip.webp"
+            className="w-full h-full object-cover"
             style={{
               opacity: isVideoReady ? 0.6 + progress * 0.4 : 0.6,
             }}

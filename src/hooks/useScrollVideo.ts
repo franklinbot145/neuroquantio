@@ -23,31 +23,61 @@ export const useScrollVideo = ({
   const lastScrollY = useRef(0);
   const ticking = useRef(false);
 
-  // Handle video metadata loaded
+  // Handle video metadata loaded - with mobile compatibility
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    const handleLoadedMetadata = () => {
+    // Force load on mobile
+    video.load();
+
+    const handleReady = () => {
       setIsVideoReady(true);
       video.currentTime = 0;
     };
 
-    const handleCanPlay = () => {
-      setIsVideoReady(true);
-    };
-
-    video.addEventListener("loadedmetadata", handleLoadedMetadata);
-    video.addEventListener("canplay", handleCanPlay);
+    video.addEventListener("loadedmetadata", handleReady);
+    video.addEventListener("canplay", handleReady);
+    video.addEventListener("canplaythrough", handleReady);
 
     // Check if already loaded
     if (video.readyState >= 1) {
       setIsVideoReady(true);
     }
 
+    // Fallback timeout - assume ready after 3s for mobile
+    const timeout = setTimeout(() => {
+      if (!isVideoReady && video.readyState >= 1) {
+        setIsVideoReady(true);
+      }
+    }, 3000);
+
     return () => {
-      video.removeEventListener("loadedmetadata", handleLoadedMetadata);
-      video.removeEventListener("canplay", handleCanPlay);
+      video.removeEventListener("loadedmetadata", handleReady);
+      video.removeEventListener("canplay", handleReady);
+      video.removeEventListener("canplaythrough", handleReady);
+      clearTimeout(timeout);
+    };
+  }, [videoRef, isVideoReady]);
+
+  // iOS touch unlock - videos need user interaction to be manipulated
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const unlockVideo = () => {
+      video.play().then(() => {
+        video.pause();
+        video.currentTime = 0;
+      }).catch(() => {
+        // Silent catch - expected on some browsers
+      });
+    };
+
+    document.addEventListener('touchstart', unlockVideo, { once: true });
+
+    return () => {
+      document.removeEventListener('touchstart', unlockVideo);
     };
   }, [videoRef]);
 
