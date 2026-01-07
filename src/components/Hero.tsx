@@ -1,5 +1,5 @@
-import { useState, useRef } from "react";
-import { motion, useTransform, useMotionValue } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
@@ -9,57 +9,77 @@ import { useScrollVideo } from "@/hooks/useScrollVideo";
 export const Hero = () => {
   const { t } = useTranslation();
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
   
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   
+  // Check if desktop on mount and resize
+  useEffect(() => {
+    const checkDevice = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    checkDevice();
+    window.addEventListener('resize', checkDevice);
+    return () => window.removeEventListener('resize', checkDevice);
+  }, []);
+  
+  // Only use scroll video hook on desktop
   const { progress, isVideoReady } = useScrollVideo({
     containerRef,
     videoRef,
     scrollHeight: 200,
+    enabled: isDesktop,
   });
 
-  // Transform progress for content animations
-  // Content fades out and moves up during 0-40% of scroll
-  const contentOpacity = Math.max(0, 1 - progress * 2.5);
-  const contentTranslateY = progress * -100; // Move up by 100px
+  // Transform progress for content animations (only on desktop)
+  const contentOpacity = isDesktop ? Math.max(0, 1 - progress * 2.5) : 1;
+  const contentTranslateY = isDesktop ? progress * -100 : 0;
 
   return (
     <div 
       ref={containerRef}
       className="relative"
-      style={{ height: "200vh" }} // Virtual scroll space
+      style={{ height: isDesktop ? "200vh" : "auto" }}
     >
       <section className="sticky top-0 min-h-screen flex items-center justify-center pt-28 md:pt-20 overflow-hidden noise-bg">
-        {/* Video background */}
+        {/* Background */}
         <div className="absolute inset-0">
-          {/* Fallback-Bild - immer sichtbar als Hintergrund */}
-          <img
-            src="/images/hero-chip.webp"
-            alt="AI Chip"
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{ opacity: 0.6 }}
-          />
-          
-          {/* Video darüber - nur sichtbar wenn es lädt */}
-          <video
-            ref={videoRef}
-            src="/videos/hero-chip-explosion.mp4"
-            muted
-            playsInline
-            // @ts-ignore - für ältere iOS-Versionen
-            webkit-playsinline=""
-            preload="metadata"
-            poster="/images/hero-chip.webp"
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{
-              opacity: isVideoReady ? 0.6 + progress * 0.4 : 0,
-            }}
-          />
+          {isDesktop ? (
+            <>
+              {/* Desktop: Video mit Scroll-Animation */}
+              <img
+                src="/images/hero-chip.webp"
+                alt="AI Chip"
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{ opacity: 0.6 }}
+              />
+              <video
+                ref={videoRef}
+                src="/videos/hero-chip-explosion.mp4"
+                muted
+                playsInline
+                preload="metadata"
+                poster="/images/hero-chip.webp"
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{
+                  opacity: isVideoReady ? 0.6 + progress * 0.4 : 0,
+                }}
+              />
+            </>
+          ) : (
+            /* Mobile/Tablet: Statisches Bild */
+            <img
+              src="/images/hero-chip.webp"
+              alt="AI Chip"
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{ opacity: 0.6 }}
+            />
+          )}
           <div 
             className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background transition-opacity duration-300"
             style={{
-              opacity: 1 - progress * 0.5,
+              opacity: isDesktop ? 1 - progress * 0.5 : 1,
             }}
           />
         </div>

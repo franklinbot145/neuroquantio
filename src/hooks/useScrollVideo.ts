@@ -4,6 +4,7 @@ interface UseScrollVideoOptions {
   containerRef: React.RefObject<HTMLElement>;
   videoRef: React.RefObject<HTMLVideoElement>;
   scrollHeight?: number; // How much virtual scroll space (in vh units)
+  enabled?: boolean; // Whether to enable the scroll video functionality
 }
 
 interface UseScrollVideoReturn {
@@ -16,12 +17,18 @@ export const useScrollVideo = ({
   containerRef,
   videoRef,
   scrollHeight = 200,
+  enabled = true,
 }: UseScrollVideoOptions): UseScrollVideoReturn => {
   const [progress, setProgress] = useState(0);
   const [isVideoReady, setIsVideoReady] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
   const lastScrollY = useRef(0);
   const ticking = useRef(false);
+
+  // If disabled, return early with default values
+  if (!enabled) {
+    return { progress: 0, isVideoReady: false, isComplete: false };
+  }
 
   // Handle video metadata loaded - with mobile compatibility
   useEffect(() => {
