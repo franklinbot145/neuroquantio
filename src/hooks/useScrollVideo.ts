@@ -25,13 +25,10 @@ export const useScrollVideo = ({
   const lastScrollY = useRef(0);
   const ticking = useRef(false);
 
-  // If disabled, return early with default values
-  if (!enabled) {
-    return { progress: 0, isVideoReady: false, isComplete: false };
-  }
-
   // Handle video metadata loaded - with mobile compatibility
   useEffect(() => {
+    if (!enabled) return;
+    
     const video = videoRef.current;
     if (!video) return;
 
@@ -65,10 +62,12 @@ export const useScrollVideo = ({
       video.removeEventListener("canplaythrough", handleReady);
       clearTimeout(timeout);
     };
-  }, [videoRef, isVideoReady]);
+  }, [videoRef, isVideoReady, enabled]);
 
   // iOS touch unlock - videos need user interaction to be manipulated
   useEffect(() => {
+    if (!enabled) return;
+    
     const video = videoRef.current;
     if (!video) return;
 
@@ -99,10 +98,12 @@ export const useScrollVideo = ({
     return () => {
       document.removeEventListener('touchstart', unlockVideo);
     };
-  }, [videoRef]);
+  }, [videoRef, enabled]);
 
   // Scroll handler
   const updateVideoTime = useCallback(() => {
+    if (!enabled) return;
+    
     const container = containerRef.current;
     const video = videoRef.current;
 
@@ -135,9 +136,11 @@ export const useScrollVideo = ({
     }
 
     ticking.current = false;
-  }, [containerRef, videoRef, isVideoReady]);
+  }, [containerRef, videoRef, isVideoReady, enabled]);
 
   useEffect(() => {
+    if (!enabled) return;
+    
     const handleScroll = () => {
       lastScrollY.current = window.scrollY;
 
@@ -155,7 +158,7 @@ export const useScrollVideo = ({
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [updateVideoTime]);
+  }, [updateVideoTime, enabled]);
 
   return {
     progress,
