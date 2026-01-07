@@ -33,6 +33,15 @@ export const Hero = () => {
       <section className="sticky top-0 min-h-screen flex items-center justify-center pt-28 md:pt-20 overflow-hidden noise-bg">
         {/* Video background */}
         <div className="absolute inset-0">
+          {/* Fallback-Bild - immer sichtbar als Hintergrund */}
+          <img
+            src="/images/hero-chip.webp"
+            alt="AI Chip"
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ opacity: 0.6 }}
+          />
+          
+          {/* Video darüber - nur sichtbar wenn es lädt */}
           <video
             ref={videoRef}
             src="/videos/hero-chip-explosion.mp4"
@@ -41,10 +50,10 @@ export const Hero = () => {
             // @ts-ignore - für ältere iOS-Versionen
             webkit-playsinline=""
             preload="metadata"
-            poster="/assets/optimized/hero-chip.webp"
-            className="w-full h-full object-cover"
+            poster="/images/hero-chip.webp"
+            className="absolute inset-0 w-full h-full object-cover"
             style={{
-              opacity: isVideoReady ? 0.6 + progress * 0.4 : 0.6,
+              opacity: isVideoReady ? 0.6 + progress * 0.4 : 0,
             }}
           />
           <div 

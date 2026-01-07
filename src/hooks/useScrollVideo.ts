@@ -65,6 +65,19 @@ export const useScrollVideo = ({
     const video = videoRef.current;
     if (!video) return;
 
+    // Sofort versuchen zu aktivieren (für einige Browser)
+    const tryActivate = async () => {
+      try {
+        await video.play();
+        video.pause();
+        video.currentTime = 0;
+      } catch {
+        // Expected on most browsers - need user interaction
+      }
+    };
+    
+    tryActivate();
+
     const unlockVideo = () => {
       video.play().then(() => {
         video.pause();
