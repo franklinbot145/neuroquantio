@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
@@ -9,77 +9,55 @@ import { useScrollVideo } from "@/hooks/useScrollVideo";
 export const Hero = () => {
   const { t } = useTranslation();
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
   
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   
-  // Check if desktop on mount and resize
-  useEffect(() => {
-    const checkDevice = () => {
-      setIsDesktop(window.innerWidth >= 1024);
-    };
-    checkDevice();
-    window.addEventListener('resize', checkDevice);
-    return () => window.removeEventListener('resize', checkDevice);
-  }, []);
-  
-  // Only use scroll video hook on desktop
+  // Scroll video hook for all devices
   const { progress, isVideoReady } = useScrollVideo({
     containerRef,
     videoRef,
     scrollHeight: 200,
-    enabled: isDesktop,
+    enabled: true,
   });
 
-  // Transform progress for content animations (only on desktop)
-  const contentOpacity = isDesktop ? Math.max(0, 1 - progress * 2.5) : 1;
-  const contentTranslateY = isDesktop ? progress * -100 : 0;
+  // Transform progress for content animations
+  const contentOpacity = Math.max(0, 1 - progress * 2.5);
+  const contentTranslateY = progress * -100;
 
   return (
     <div 
       ref={containerRef}
       className="relative"
-      style={{ height: isDesktop ? "200vh" : "auto" }}
+      style={{ height: "200vh" }}
     >
       <section className="sticky top-0 min-h-screen flex items-center justify-center pt-28 md:pt-20 overflow-hidden noise-bg">
         {/* Background */}
         <div className="absolute inset-0">
-          {isDesktop ? (
-            <>
-              {/* Desktop: Video mit Scroll-Animation */}
-              <img
-                src="/images/hero-chip.webp"
-                alt="AI Chip"
-                className="absolute inset-0 w-full h-full object-cover"
-                style={{ opacity: 0.6 }}
-              />
-              <video
-                ref={videoRef}
-                src="/videos/hero-chip-explosion.mp4"
-                muted
-                playsInline
-                preload="metadata"
-                poster="/images/hero-chip.webp"
-                className="absolute inset-0 w-full h-full object-cover"
-                style={{
-                  opacity: isVideoReady ? 0.6 + progress * 0.4 : 0,
-                }}
-              />
-            </>
-          ) : (
-            /* Mobile/Tablet: Statisches Bild */
-            <img
-              src="/images/hero-chip.webp"
-              alt="AI Chip"
-              className="absolute inset-0 w-full h-full object-cover"
-              style={{ opacity: 0.6 }}
-            />
-          )}
+          {/* Fallback-Bild */}
+          <img
+            src="/images/hero-chip.webp"
+            alt="AI Chip"
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ opacity: 0.6 }}
+          />
+          {/* Video mit Scroll-Animation für alle Geräte */}
+          <video
+            ref={videoRef}
+            src="/videos/hero-chip-explosion.mp4"
+            muted
+            playsInline
+            preload="metadata"
+            poster="/images/hero-chip.webp"
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{
+              opacity: isVideoReady ? 0.6 + progress * 0.4 : 0,
+            }}
+          />
           <div 
             className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background transition-opacity duration-300"
             style={{
-              opacity: isDesktop ? 1 - progress * 0.5 : 1,
+              opacity: 1 - progress * 0.5,
             }}
           />
         </div>
