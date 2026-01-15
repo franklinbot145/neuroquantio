@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, MapPin, Clock, Send, MessageSquare, Building } from "lucide-react";
+import { Mail, Phone, Clock, Send, MessageSquare } from "lucide-react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -35,37 +35,10 @@ const contactInfo = [
     href: "tel:+4930123456789"
   },
   {
-    icon: MapPin,
-    title: "Adresse",
-    value: "Friedrichstraße 123, 10117 Berlin",
-    href: "#"
-  },
-  {
     icon: Clock,
     title: "Öffnungszeiten",
     value: "Mo-Fr: 9:00 - 18:00 Uhr",
     href: "#"
-  }
-];
-
-const offices = [
-  {
-    city: "Berlin",
-    address: "Friedrichstraße 123",
-    zip: "10117 Berlin",
-    type: "Hauptsitz"
-  },
-  {
-    city: "München",
-    address: "Maximilianstraße 45",
-    zip: "80539 München",
-    type: "Vertriebsbüro"
-  },
-  {
-    city: "Hamburg",
-    address: "Jungfernstieg 12",
-    zip: "20354 Hamburg",
-    type: "Technisches Zentrum"
   }
 ];
 
@@ -254,7 +227,7 @@ const Kontakt = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="space-y-4 mb-12"
+                className="space-y-4"
               >
                 {contactInfo.map((info, index) => (
                   <motion.a
@@ -273,57 +246,8 @@ const Kontakt = () => {
                   </motion.a>
                 ))}
               </motion.div>
-
-              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                <Building className="w-5 h-5 text-neon-purple" />
-                Unsere Standorte
-              </h3>
-              <motion.div
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="space-y-4"
-              >
-                {offices.map((office, index) => (
-                  <motion.div
-                    key={index}
-                    variants={itemVariants}
-                    className="p-4 glass-strong rounded-xl"
-                  >
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-semibold">{office.city}</span>
-                      <span className="text-xs px-2 py-1 rounded-full bg-neon-purple/20 text-neon-purple">
-                        {office.type}
-                      </span>
-                    </div>
-                    <div className="text-sm text-muted-foreground">
-                      {office.address}<br />
-                      {office.zip}
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
             </motion.div>
           </div>
-        </div>
-      </section>
-
-      {/* Map Placeholder */}
-      <section className="py-20 border-t border-border/50">
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="glass-strong rounded-2xl h-96 flex items-center justify-center"
-          >
-            <div className="text-center">
-              <MapPin className="w-16 h-16 text-neon-cyan/50 mx-auto mb-4" />
-              <p className="text-muted-foreground">Interaktive Karte</p>
-              <p className="text-sm text-muted-foreground">Friedrichstraße 123, 10117 Berlin</p>
-            </div>
-          </motion.div>
         </div>
       </section>
 
