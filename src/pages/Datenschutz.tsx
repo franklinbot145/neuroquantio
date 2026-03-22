@@ -161,11 +161,10 @@ const Datenschutz = () => {
                   <h2 className="text-2xl font-semibold text-foreground mb-4">2. Data Controller</h2>
                   <p className="text-muted-foreground">
                     The data controller for data processing on this website is:<br /><br />
-                    Neuroquant GmbH<br />
-                    [YOUR STREET AND NUMBER]<br />
-                    [YOUR POSTAL CODE AND CITY]<br />
-                    Germany<br /><br />
-                    Phone: [YOUR PHONE NUMBER]<br />
+                    NEUROQUANT LLC<br />
+                    1209 Mountain Road PL NE STE N<br />
+                    Albuquerque, NM 87110<br />
+                    United States<br /><br />
                     Email: info@neuroquant.io
                   </p>
                 </section>
