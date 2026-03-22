@@ -47,11 +47,10 @@ const Datenschutz = () => {
                   <h2 className="text-2xl font-semibold text-foreground mb-4">2. Verantwortliche Stelle</h2>
                   <p className="text-muted-foreground">
                     Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:<br /><br />
-                    Neuroquant GmbH<br />
-                    [IHRE STRASSE UND HAUSNUMMER]<br />
-                    [IHRE PLZ UND STADT]<br />
-                    Deutschland<br /><br />
-                    Telefon: [IHRE TELEFONNUMMER]<br />
+                    NEUROQUANT LLC<br />
+                    1209 Mountain Road PL NE STE N<br />
+                    Albuquerque, NM 87110<br />
+                    United States<br /><br />
                     E-Mail: info@neuroquant.io
                   </p>
                 </section>
@@ -162,11 +161,10 @@ const Datenschutz = () => {
                   <h2 className="text-2xl font-semibold text-foreground mb-4">2. Data Controller</h2>
                   <p className="text-muted-foreground">
                     The data controller for data processing on this website is:<br /><br />
-                    Neuroquant GmbH<br />
-                    [YOUR STREET AND NUMBER]<br />
-                    [YOUR POSTAL CODE AND CITY]<br />
-                    Germany<br /><br />
-                    Phone: [YOUR PHONE NUMBER]<br />
+                    NEUROQUANT LLC<br />
+                    1209 Mountain Road PL NE STE N<br />
+                    Albuquerque, NM 87110<br />
+                    United States<br /><br />
                     Email: info@neuroquant.io
                   </p>
                 </section>
